@@ -20,7 +20,9 @@ namespace view {
 
         this->newGameButton = new Fl_Button(45, 50, 125, 50, "New Game");
         this->newGameButton->callback(cbNewGame, this);
-        this->lettersLabel = new Fl_Output(this->centerXPosition, height - 125, 0, 0, "Letters:");
+
+        this->submitWordButton = new Fl_Button(45, height - 100, 125, 50, "Submit");
+        this->submitWordButton->callback(cbSubmitWord, this);
 
         this->initializeLetters();
         this->initializeGamePlayButtons();
@@ -46,7 +48,8 @@ namespace view {
     //
     void TextTwistWindow::cbLetterSelected(Fl_Widget* widget, void* data)
     {
-        cout << widget->label() << endl;
+        TextTwistWindow* window = (TextTwistWindow*)data;
+        window->userWord.append(widget->label());
         widget->deactivate();
     }
 
@@ -62,6 +65,16 @@ namespace view {
         {
             button->activate();
         }
+    }
+
+    void TextTwistWindow::cbSubmitWord(Fl_Widget* widget, void* data)
+    {
+        TextTwistWindow* window = (TextTwistWindow*)data;
+
+        cout << "Word Submitted: " << window->userWord << endl;
+
+        // reset the word
+        window->userWord = "";
     }
 
     /*
@@ -131,8 +144,7 @@ namespace view {
             this->letters.push_back("e");
         }
 
-        cout << "Size of Letters: " << endl;
-        cout << this->letters.size();
+        cout << "Size of Letters Vector: " << this->letters.size() << endl;
     }
 
     void TextTwistWindow::initializeGamePlayButtons()
@@ -145,7 +157,7 @@ namespace view {
             char* letterToAdd = new char[letter.length() + 1];
             strcpy(letterToAdd, letter.c_str());
 
-            Fl_Button* buttonToAdd = new Fl_Button(xPosition, this->windowHeight - 100, 50, 50, letterToAdd);
+            Fl_Button* buttonToAdd = new Fl_Button(xPosition, this->windowHeight - 200, 50, 50, letterToAdd);
             buttonToAdd->callback(cbLetterSelected, this);
             this->letterButtons.push_back(buttonToAdd);
         }

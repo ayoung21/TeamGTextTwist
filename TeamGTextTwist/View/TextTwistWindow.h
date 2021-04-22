@@ -39,10 +39,11 @@ namespace view {
             int centerXPosition;
             int centerYPosition;
             Fl_Button* newGameButton;
+            Fl_Button* submitWordButton;
             vector<string> wordList;
             vector<Fl_Button*> letterButtons;
             vector<string> letters;
-            Fl_Output *lettersLabel;
+            string userWord;
 
             /*
             ** Private Methods
@@ -53,6 +54,7 @@ namespace view {
             static void cbNewGame(Fl_Widget* widget, void* data);
             void resetGame();
             static void cbLetterSelected(Fl_Widget* widget, void* data);
+            static void cbSubmitWord(Fl_Widget* widget, void* data);
     };
 }
 #endif // TEXTTWISTWINDOW_H
