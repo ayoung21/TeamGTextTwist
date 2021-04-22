@@ -63,7 +63,20 @@ namespace view {
 
     void TextTwistWindow::resetGame()
     {
-        for (auto & button: letterButtons)
+        for (auto & button : letterButtons)
+        {
+            string letter = this->getRandomLetter();
+            char* letterToAdd = new char[letter.length() + 1];
+            strcpy(letterToAdd, letter.c_str());
+
+            button->label(letterToAdd);
+        }
+        this->enableLetterButtons();
+    }
+
+    void TextTwistWindow::enableLetterButtons()
+    {
+        for (auto & button : letterButtons)
         {
             button->activate();
         }
@@ -79,6 +92,9 @@ namespace view {
 
         // reset the word
         window->userWord = "";
+
+        // enable all buttons
+        window->enableLetterButtons();
 
 
     }

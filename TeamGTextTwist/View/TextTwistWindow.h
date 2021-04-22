@@ -56,6 +56,7 @@ namespace view {
             static void cbLetterSelected(Fl_Widget* widget, void* data);
             static void cbSubmitWord(Fl_Widget* widget, void* data);
             bool isValidWord();
+            void enableLetterButtons();
     };
 }
 #endif // TEXTTWISTWINDOW_H
