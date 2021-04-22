@@ -55,6 +55,7 @@ namespace view {
             void resetGame();
             static void cbLetterSelected(Fl_Widget* widget, void* data);
             static void cbSubmitWord(Fl_Widget* widget, void* data);
+            bool isValidWord();
     };
 }
 #endif // TEXTTWISTWINDOW_H

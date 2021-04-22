@@ -9,6 +9,8 @@
 #include <algorithm>
 using namespace std;
 
+#include "Utils.h"
+
 namespace view {
     TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_Window(width, height, title)
     {
@@ -73,8 +75,12 @@ namespace view {
 
         cout << "Word Submitted: " << window->userWord << endl;
 
+        cout << window->userWord << " is valid? " << window->isValidWord() << endl;
+
         // reset the word
         window->userWord = "";
+
+
     }
 
     /*
@@ -169,5 +175,21 @@ namespace view {
         random_shuffle(this->letters.begin(), this->letters.end());
         string letter = this->letters.at(0);
         return letter;
+    }
+
+    bool TextTwistWindow::isValidWord()
+    {
+        string userInputUpper = toUpperCase(this->userWord);
+        for (string word : this->wordList)
+        {
+            string wordUpper = toUpperCase(word);
+
+            if (userInputUpper.compare(wordUpper) == 0)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
