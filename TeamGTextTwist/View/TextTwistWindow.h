@@ -11,6 +11,7 @@
 #include <FL/Fl_Button.H>
 
 #include <vector>
+#include <string>
 using namespace std;
 
 namespace view {
@@ -35,12 +36,15 @@ namespace view {
             int centerYPosition;
             Fl_Button* newGameButton;
             vector<Fl_Button*> letterButtons;
+            vector<string> letters;
             Fl_Output *lettersLabel;
 
             /*
             ** Private Methods
             */
             void initializeGamePlayButtons();
+            void initializeLetters();
+            string getRandomLetter();
             static void cbNewGame(Fl_Widget* widget, void* data);
             void resetGame();
             static void cbLetterSelected(Fl_Widget* widget, void* data);
