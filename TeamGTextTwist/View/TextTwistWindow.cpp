@@ -3,6 +3,8 @@
 #include <FL/fl_types.h>
 #include <Fl/fl_draw.H>
 
+
+
 #include <iostream>
 #include <vector>
 #include <FL/Fl_Button.H>
@@ -12,20 +14,23 @@ namespace view {
     TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_Window(width, height, title)
     {
         begin();
-        int centerXPosition = (width / 2) + 30;
-        int centerYPosition = (height / 2) - 30;
-        this->lettersLabel = new Fl_Output(centerXPosition, height - 125, 0, 0, "Letters:");
-        vector<Fl_Button*> letterButtons;
+        this->windowWidth = width;
+        this->windowHeight = height;
+        centerXPosition = (width / 2) + 30;
+        centerYPosition = (height / 2) - 30;
 
-        int paddingLeft = 45;
-        for (int index = 0; index < 7; index++) {
-            int xPosition = (index * 75) + paddingLeft;
-            Fl_Button* buttonToAdd = new Fl_Button(xPosition, height - 100, 50, 50, "test");
-            buttonToAdd->callback(cbLetterSelected, this);
-            letterButtons.push_back(buttonToAdd);
-        }
+        this->newGameButton = new Fl_Button(45, 50, 125, 50, "New Game");
+        this->newGameButton->callback(cbNewGame, this);
+        this->lettersLabel = new Fl_Output(this->centerXPosition, height - 125, 0, 0, "Letters:");
 
+
+        this->initializeGamePlayButtons();
         end();
+    }
+
+    TextTwistWindow::~TextTwistWindow()
+    {
+        //dtor
     }
 
     //
@@ -39,11 +44,35 @@ namespace view {
     //
     void TextTwistWindow::cbLetterSelected(Fl_Widget* widget, void* data)
     {
-        cout << "Button Pressed!" << endl;
+        widget->deactivate();
     }
 
-    TextTwistWindow::~TextTwistWindow()
+    void TextTwistWindow::cbNewGame(Fl_Widget* widget, void* data)
     {
-        //dtor
+        TextTwistWindow* window = (TextTwistWindow*)data;
+        window->resetGame();
+    }
+
+    void TextTwistWindow::resetGame()
+    {
+        for (auto & button: letterButtons)
+        {
+            button->activate();
+        }
+    }
+
+    /*
+    ** PRIVATE METHODS
+    */
+
+    void TextTwistWindow::initializeGamePlayButtons()
+    {
+        int paddingLeft = 45;
+        for (int index = 0; index < 7; index++) {
+            int xPosition = (index * 75) + paddingLeft;
+            Fl_Button* buttonToAdd = new Fl_Button(xPosition, this->windowHeight - 100, 50, 50, "test");
+            buttonToAdd->callback(cbLetterSelected, this);
+            this->letterButtons.push_back(buttonToAdd);
+        }
     }
 }

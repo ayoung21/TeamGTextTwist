@@ -5,7 +5,7 @@
 	<FL/Fl_Box.H>
 	"TextTwistWindow.h"
 
-1619003477 /home/ayoung21/Desktop/TextTwist/TeamGTextTwist/View/TextTwistWindow.h
+1619091572 /home/ayoung21/Desktop/TextTwist/TeamGTextTwist/View/TextTwistWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Group.H>
@@ -14,6 +14,7 @@
 	<FL/Fl_Text_Buffer.H>
 	<FL/Fl_Text_Display.H>
 	<FL/Fl_Button.H>
+	<vector>
 
 1618941478 source:/home/ayoung21/Desktop/TextTwist/TeamGTextTwist/View/TextTwistWindow.cpp
 	"TextTwistWindow.h"
