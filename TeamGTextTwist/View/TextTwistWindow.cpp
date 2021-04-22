@@ -24,6 +24,9 @@ namespace view {
 
         this->initializeLetters();
         this->initializeGamePlayButtons();
+
+        this->fileIO.createWordListFromFile(this->wordList);
+
         end();
     }
 
@@ -43,6 +46,7 @@ namespace view {
     //
     void TextTwistWindow::cbLetterSelected(Fl_Widget* widget, void* data)
     {
+        cout << widget->label() << endl;
         widget->deactivate();
     }
 

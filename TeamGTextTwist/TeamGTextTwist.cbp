@@ -23,8 +23,8 @@
 		<Linker>
 			<Add option="`fltk-config --ldstaticflags`" />
 		</Linker>
-		<Unit filename="View/TextTwist.cpp" />
-		<Unit filename="View/TextTwist.h" />
+		<Unit filename="View/TextTwistWindow.cpp" />
+		<Unit filename="View/TextTwistWindow.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

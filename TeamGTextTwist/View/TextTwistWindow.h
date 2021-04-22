@@ -14,6 +14,9 @@
 #include <string>
 using namespace std;
 
+#include "FileIO.h"
+using namespace fileIO;
+
 namespace view {
     class TextTwistWindow : public Fl_Window
     {
@@ -30,11 +33,13 @@ namespace view {
             /*
             ** Private Member Variables
             */
+            FileIO fileIO;
             int windowWidth;
             int windowHeight;
             int centerXPosition;
             int centerYPosition;
             Fl_Button* newGameButton;
+            vector<string> wordList;
             vector<Fl_Button*> letterButtons;
             vector<string> letters;
             Fl_Output *lettersLabel;
