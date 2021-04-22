@@ -149,7 +149,9 @@ namespace view {
 
     string TextTwistWindow::getRandomLetter()
     {
-        string letter = this->letters.at(rand() % this->letters.size());
+        srand(time(0));
+        random_shuffle(this->letters.begin(), this->letters.end());
+        string letter = this->letters.at(0);
         return letter;
     }
 }
