@@ -7,7 +7,7 @@ using namespace view;
 
 int main (int argc, char ** argv)
 {
-    TextTwistWindow mainWindow(600, 400, "Team G Text Twist");
+    TextTwistWindow mainWindow(600, 600, "Team G Text Twist");
     mainWindow.show();
 
     int exitCode = Fl::run();

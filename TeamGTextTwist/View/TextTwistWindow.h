@@ -49,11 +49,14 @@ namespace view {
             vector<string> wordList;
             vector<Fl_Button*> letterButtons;
             vector<string> letters;
+            vector<string> validWordsSubmitted;
             string userWord;
             Fl_Text_Buffer *currentUserGuessBuffer;
             Fl_Text_Display *currentUserGuessDisplay;
             Fl_Text_Buffer *currentScoreBuffer;
             Fl_Text_Display *currentScoreDisplay;
+            Fl_Text_Buffer *validWordsSubmittedBuffer;
+            Fl_Text_Display *validWordsSubmittedDisplay;
             Fl_Output *currentScoreLabel;
             int score = 0;
 
@@ -74,6 +77,7 @@ namespace view {
             void addToScore(int wordLength);
             void updateScoreDisplay();
             void reduceScore();
+            void updateValidWordsDisplay();
     };
 }
 #endif // TEXTTWISTWINDOW_H

@@ -47,6 +47,11 @@ namespace view {
         this->currentScoreDisplay->buffer(currentScoreBuffer);
         this->updateScoreDisplay();
 
+        this->validWordsSubmittedBuffer = new Fl_Text_Buffer();
+        this->validWordsSubmittedDisplay = new Fl_Text_Display((this->windowWidth / 2) - 75, (this->windowHeight / 2) - 75, 150, 150);
+        this->validWordsSubmittedDisplay->textfont(FL_COURIER);
+        this->validWordsSubmittedDisplay->buffer(validWordsSubmittedBuffer);
+
         this->fileIO.createWordListFromFile(this->wordList);
 
         end();
@@ -117,6 +122,9 @@ namespace view {
         {
             window->addToScore(window->userWord.length());
             window->updateScoreDisplay();
+
+            window->validWordsSubmitted.push_back(window->userWord);
+            window->updateValidWordsDisplay();
         } else
         {
             window->reduceScore();
@@ -288,5 +296,15 @@ namespace view {
     {
         const int pointsToReduce = 10;
         this->score -= pointsToReduce;
+    }
+
+    void TextTwistWindow::updateValidWordsDisplay()
+    {
+        string words = "";
+        for (string word : this->validWordsSubmitted)
+        {
+            words += word + "\n";
+        }
+        this->validWordsSubmittedBuffer->text(words.c_str());
     }
 }
