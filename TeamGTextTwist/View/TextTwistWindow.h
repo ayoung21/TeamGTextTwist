@@ -73,6 +73,7 @@ namespace view {
             void clearUserGuess();
             void addToScore(int wordLength);
             void updateScoreDisplay();
+            void reduceScore();
     };
 }
 #endif // TEXTTWISTWINDOW_H

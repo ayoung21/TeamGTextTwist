@@ -117,6 +117,10 @@ namespace view {
         {
             window->addToScore(window->userWord.length());
             window->updateScoreDisplay();
+        } else
+        {
+            window->reduceScore();
+            window->updateScoreDisplay();
         }
 
         // enable all buttons
@@ -278,5 +282,11 @@ namespace view {
     {
         cout << "Score: " << to_string(this->score) << endl;
         this->currentScoreBuffer->text(to_string(this->score).c_str());
+    }
+
+    void TextTwistWindow::reduceScore()
+    {
+        const int pointsToReduce = 10;
+        this->score -= pointsToReduce;
     }
 }
