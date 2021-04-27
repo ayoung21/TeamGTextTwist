@@ -44,6 +44,11 @@ namespace view {
             vector<Fl_Button*> letterButtons;
             vector<string> letters;
             string userWord;
+            Fl_Text_Buffer *currentUserGuessBuffer;
+            Fl_Text_Display *currentUserGuessDisplay;
+
+            // Fl_Label* currentUserGuess;
+            // Fl_Input* userInputTextBox;
 
             /*
             ** Private Methods
@@ -57,6 +62,8 @@ namespace view {
             static void cbSubmitWord(Fl_Widget* widget, void* data);
             bool isValidWord();
             void enableLetterButtons();
+
+            void clearUserGuess();
     };
 }
 #endif // TEXTTWISTWINDOW_H

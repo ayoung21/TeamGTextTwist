@@ -29,6 +29,11 @@ namespace view {
         this->initializeLetters();
         this->initializeGamePlayButtons();
 
+        this->currentUserGuessBuffer = new Fl_Text_Buffer();
+        this->currentUserGuessDisplay = new Fl_Text_Display(45, 120, 250, 25);
+        this->currentUserGuessDisplay->textfont(FL_COURIER);
+        this->currentUserGuessDisplay->buffer(currentUserGuessBuffer);
+
         this->fileIO.createWordListFromFile(this->wordList);
 
         end();
@@ -52,6 +57,8 @@ namespace view {
     {
         TextTwistWindow* window = (TextTwistWindow*)data;
         window->userWord.append(widget->label());
+        // window->userInputTextBox->insert(widget->label());
+        window->currentUserGuessBuffer->text(window->userWord.c_str());
         widget->deactivate();
     }
 
@@ -90,13 +97,11 @@ namespace view {
 
         cout << window->userWord << " is valid? " << window->isValidWord() << endl;
 
-        // reset the word
-        window->userWord = "";
-
         // enable all buttons
         window->enableLetterButtons();
 
-
+        // reset input and word
+        window->clearUserGuess();
     }
 
     /*
@@ -207,5 +212,11 @@ namespace view {
         }
 
         return false;
+    }
+
+    void TextTwistWindow::clearUserGuess()
+    {
+        this->userWord = "";
+        this->currentUserGuessBuffer->text("");
     }
 }
