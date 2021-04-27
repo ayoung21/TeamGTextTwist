@@ -106,6 +106,9 @@ namespace view {
         this->submitWordButton->deactivate();
         this->score = 0;
         this->updateScoreDisplay();
+        this->duplicateWordSubmissionLabel->hide();
+        this->validWordsSubmitted.clear();
+        this->updateValidWordsDisplay();
     }
 
     void TextTwistWindow::enableLetterButtons()
