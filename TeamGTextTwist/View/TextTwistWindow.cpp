@@ -40,6 +40,8 @@ namespace view {
         this->currentUserGuessDisplay->buffer(currentUserGuessBuffer);
 
         this->currentScoreLabel = new Fl_Output(this->windowWidth - 100, 55, 0, 0, "Current Score:");
+        this->duplicateWordSubmissionLabel = new Fl_Output(300, this->windowHeight - 260, 100, 0, "Word has already been submitted...");
+        this->duplicateWordSubmissionLabel->hide();
 
         this->currentScoreBuffer = new Fl_Text_Buffer();
         this->currentScoreDisplay = new Fl_Text_Display(this->windowWidth - 100, DEFAULT_PADDING, 50, 25);
@@ -117,14 +119,23 @@ namespace view {
     void TextTwistWindow::cbSubmitWord(Fl_Widget* widget, void* data)
     {
         TextTwistWindow* window = (TextTwistWindow*)data;
+        window->duplicateWordSubmissionLabel->hide();
 
         if (window->isValidWord())
         {
-            window->addToScore(window->userWord.length());
-            window->updateScoreDisplay();
+            if (window->isDuplicatedWordSubmission(window->userWord))
+            {
+                window->duplicateWordSubmissionLabel->show();
+            }
+            else
+            {
+                window->addToScore(window->userWord.length());
+                window->updateScoreDisplay();
 
-            window->validWordsSubmitted.push_back(window->userWord);
-            window->updateValidWordsDisplay();
+                window->validWordsSubmitted.push_back(window->userWord);
+                window->updateValidWordsDisplay();
+            }
+
         } else
         {
             window->reduceScore();
@@ -306,5 +317,20 @@ namespace view {
             words += word + "\n";
         }
         this->validWordsSubmittedBuffer->text(words.c_str());
+    }
+
+    bool TextTwistWindow::isDuplicatedWordSubmission(string& userSubmittedWord)
+    {
+        string userInputUpper = toUpperCase(this->userWord);
+        for (string word : this->validWordsSubmitted)
+        {
+            string wordUpper = toUpperCase(word);
+            if (userInputUpper.compare(wordUpper) == 0)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

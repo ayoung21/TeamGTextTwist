@@ -59,6 +59,7 @@ namespace view {
             Fl_Text_Buffer *validWordsSubmittedBuffer;
             Fl_Text_Display *validWordsSubmittedDisplay;
             Fl_Output *currentScoreLabel;
+            Fl_Output *duplicateWordSubmissionLabel;
             int score = 0;
 
             /*
@@ -79,6 +80,7 @@ namespace view {
             void updateScoreDisplay();
             void reduceScore();
             void updateValidWordsDisplay();
+            bool isDuplicatedWordSubmission(string& userSubmittedWord);
     };
 }
 #endif // TEXTTWISTWINDOW_H
