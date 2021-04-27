@@ -25,6 +25,7 @@ namespace view {
 
         this->submitWordButton = new Fl_Button(45, height - 100, 125, 50, "Submit");
         this->submitWordButton->callback(cbSubmitWord, this);
+        this->submitWordButton->deactivate();
 
         this->twistLettersButton = new Fl_Button(200, height - 100, 125, 50, "Twist Letters");
         this->twistLettersButton->callback(cbTwistLetters, this);
@@ -60,9 +61,13 @@ namespace view {
     {
         TextTwistWindow* window = (TextTwistWindow*)data;
         window->userWord.append(widget->label());
-        // window->userInputTextBox->insert(widget->label());
         window->currentUserGuessBuffer->text(window->userWord.c_str());
         widget->deactivate();
+
+        if (window->userWord.length() >= window->MIN_LETTERS_TO_SUBMIT)
+        {
+            window->submitWordButton->activate();
+        }
     }
 
     void TextTwistWindow::cbNewGame(Fl_Widget* widget, void* data)
@@ -82,6 +87,7 @@ namespace view {
             button->label(letterToAdd);
         }
         this->enableLetterButtons();
+        this->submitWordButton->deactivate();
     }
 
     void TextTwistWindow::enableLetterButtons()
@@ -105,6 +111,8 @@ namespace view {
 
         // reset input and word
         window->clearUserGuess();
+
+        window->submitWordButton->deactivate();
     }
 
     void TextTwistWindow::cbTwistLetters(Fl_Widget* widget, void* data)

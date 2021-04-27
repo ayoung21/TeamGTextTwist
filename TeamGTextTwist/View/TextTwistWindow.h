@@ -33,6 +33,7 @@ namespace view {
             /*
             ** Private Member Variables
             */
+            const int MIN_LETTERS_TO_SUBMIT = 3;
             FileIO fileIO;
             int windowWidth;
             int windowHeight;
