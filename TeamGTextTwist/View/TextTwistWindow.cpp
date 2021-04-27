@@ -18,10 +18,10 @@ namespace view {
         begin();
         this->windowWidth = width;
         this->windowHeight = height;
-        centerXPosition = (width / 2) + 30;
-        centerYPosition = (height / 2) - 30;
+        centerXPosition = (width / 2);
+        centerYPosition = (height / 2);
 
-        this->newGameButton = new Fl_Button(45, 50, 125, 50, "New Game");
+        this->newGameButton = new Fl_Button(DEFAULT_PADDING, DEFAULT_PADDING, 125, 50, "New Game");
         this->newGameButton->callback(cbNewGame, this);
 
         this->submitWordButton = new Fl_Button(45, height - 100, 125, 50, "Submit");
@@ -35,20 +35,20 @@ namespace view {
         this->initializeGamePlayButtons();
 
         this->currentUserGuessBuffer = new Fl_Text_Buffer();
-        this->currentUserGuessDisplay = new Fl_Text_Display(45, 120, 250, 25);
+        this->currentUserGuessDisplay = new Fl_Text_Display(45, this->windowHeight - 250, 275, 25);
         this->currentUserGuessDisplay->textfont(FL_COURIER);
         this->currentUserGuessDisplay->buffer(currentUserGuessBuffer);
 
-        this->currentScoreLabel = new Fl_Output(this->windowWidth - 100, 130, 0, 0, "Current Score:");
+        this->currentScoreLabel = new Fl_Output(this->windowWidth - 100, 55, 0, 0, "Current Score:");
 
         this->currentScoreBuffer = new Fl_Text_Buffer();
-        this->currentScoreDisplay = new Fl_Text_Display(this->windowWidth - 100, 120, 50, 25);
+        this->currentScoreDisplay = new Fl_Text_Display(this->windowWidth - 100, DEFAULT_PADDING, 50, 25);
         this->currentScoreDisplay->textfont(FL_COURIER);
         this->currentScoreDisplay->buffer(currentScoreBuffer);
         this->updateScoreDisplay();
 
         this->validWordsSubmittedBuffer = new Fl_Text_Buffer();
-        this->validWordsSubmittedDisplay = new Fl_Text_Display((this->windowWidth / 2) - 75, (this->windowHeight / 2) - 75, 150, 150);
+        this->validWordsSubmittedDisplay = new Fl_Text_Display(this->windowWidth - (150 + DEFAULT_PADDING), 100, 150, 275);
         this->validWordsSubmittedDisplay->textfont(FL_COURIER);
         this->validWordsSubmittedDisplay->buffer(validWordsSubmittedBuffer);
 
@@ -237,7 +237,7 @@ namespace view {
     {
         int paddingLeft = 45;
         for (int index = 0; index < 7; index++) {
-            int xPosition = (index * 75) + paddingLeft;
+            int xPosition = (index * 77) + paddingLeft;
 
             string letter = this->getRandomLetter();
             char* letterToAdd = new char[letter.length() + 1];

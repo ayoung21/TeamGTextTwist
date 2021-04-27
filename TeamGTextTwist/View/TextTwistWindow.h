@@ -33,6 +33,7 @@ namespace view {
             /*
             ** Constants
             */
+            const int DEFAULT_PADDING = 45;
             const int MIN_LETTERS_TO_SUBMIT = 3;
 
             /*
