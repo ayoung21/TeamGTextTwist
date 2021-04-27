@@ -40,6 +40,7 @@ namespace view {
             int centerYPosition;
             Fl_Button* newGameButton;
             Fl_Button* submitWordButton;
+            Fl_Button* twistLettersButton;
             vector<string> wordList;
             vector<Fl_Button*> letterButtons;
             vector<string> letters;
@@ -60,6 +61,7 @@ namespace view {
             void resetGame();
             static void cbLetterSelected(Fl_Widget* widget, void* data);
             static void cbSubmitWord(Fl_Widget* widget, void* data);
+            static void cbTwistLetters(Fl_Widget* widget, void* data);
             bool isValidWord();
             void enableLetterButtons();
 

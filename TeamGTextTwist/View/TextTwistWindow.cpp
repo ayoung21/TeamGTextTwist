@@ -26,6 +26,9 @@ namespace view {
         this->submitWordButton = new Fl_Button(45, height - 100, 125, 50, "Submit");
         this->submitWordButton->callback(cbSubmitWord, this);
 
+        this->twistLettersButton = new Fl_Button(200, height - 100, 125, 50, "Twist Letters");
+        this->twistLettersButton->callback(cbTwistLetters, this);
+
         this->initializeLetters();
         this->initializeGamePlayButtons();
 
@@ -102,6 +105,29 @@ namespace view {
 
         // reset input and word
         window->clearUserGuess();
+    }
+
+    void TextTwistWindow::cbTwistLetters(Fl_Widget* widget, void* data)
+    {
+        TextTwistWindow* window = (TextTwistWindow*)data;
+        vector<string> currentLetters;
+        for (auto & currentButton : window->letterButtons)
+        {
+            currentLetters.push_back(currentButton->label());
+        }
+
+        srand(time(0));
+        random_shuffle(currentLetters.begin(), currentLetters.end());
+
+        int index = 0;
+        for (auto & currentButton : window->letterButtons)
+        {
+            string letter = currentLetters.at(index);
+            char* letterToChangeTo = new char[letter.length() + 1];
+            strcpy(letterToChangeTo, letter.c_str());
+            currentButton->label(letterToChangeTo);
+            index++;
+        }
     }
 
     /*
