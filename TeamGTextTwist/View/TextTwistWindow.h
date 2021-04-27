@@ -31,9 +31,13 @@ namespace view {
 
         private:
             /*
-            ** Private Member Variables
+            ** Constants
             */
             const int MIN_LETTERS_TO_SUBMIT = 3;
+
+            /*
+            ** Private Member Variables
+            */
             FileIO fileIO;
             int windowWidth;
             int windowHeight;
@@ -48,9 +52,10 @@ namespace view {
             string userWord;
             Fl_Text_Buffer *currentUserGuessBuffer;
             Fl_Text_Display *currentUserGuessDisplay;
-
-            // Fl_Label* currentUserGuess;
-            // Fl_Input* userInputTextBox;
+            Fl_Text_Buffer *currentScoreBuffer;
+            Fl_Text_Display *currentScoreDisplay;
+            Fl_Output *currentScoreLabel;
+            int score = 0;
 
             /*
             ** Private Methods
@@ -65,8 +70,9 @@ namespace view {
             static void cbTwistLetters(Fl_Widget* widget, void* data);
             bool isValidWord();
             void enableLetterButtons();
-
             void clearUserGuess();
+            void addToScore(int wordLength);
+            void updateScoreDisplay();
     };
 }
 #endif // TEXTTWISTWINDOW_H

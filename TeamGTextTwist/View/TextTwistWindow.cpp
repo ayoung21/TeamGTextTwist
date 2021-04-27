@@ -7,6 +7,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <string>
 using namespace std;
 
 #include "Utils.h"
@@ -37,6 +38,14 @@ namespace view {
         this->currentUserGuessDisplay = new Fl_Text_Display(45, 120, 250, 25);
         this->currentUserGuessDisplay->textfont(FL_COURIER);
         this->currentUserGuessDisplay->buffer(currentUserGuessBuffer);
+
+        this->currentScoreLabel = new Fl_Output(this->windowWidth - 100, 130, 0, 0, "Current Score:");
+
+        this->currentScoreBuffer = new Fl_Text_Buffer();
+        this->currentScoreDisplay = new Fl_Text_Display(this->windowWidth - 100, 120, 50, 25);
+        this->currentScoreDisplay->textfont(FL_COURIER);
+        this->currentScoreDisplay->buffer(currentScoreBuffer);
+        this->updateScoreDisplay();
 
         this->fileIO.createWordListFromFile(this->wordList);
 
@@ -88,6 +97,8 @@ namespace view {
         }
         this->enableLetterButtons();
         this->submitWordButton->deactivate();
+        this->score = 0;
+        this->updateScoreDisplay();
     }
 
     void TextTwistWindow::enableLetterButtons()
@@ -102,9 +113,11 @@ namespace view {
     {
         TextTwistWindow* window = (TextTwistWindow*)data;
 
-        cout << "Word Submitted: " << window->userWord << endl;
-
-        cout << window->userWord << " is valid? " << window->isValidWord() << endl;
+        if (window->isValidWord())
+        {
+            window->addToScore(window->userWord.length());
+            window->updateScoreDisplay();
+        }
 
         // enable all buttons
         window->enableLetterButtons();
@@ -252,5 +265,18 @@ namespace view {
     {
         this->userWord = "";
         this->currentUserGuessBuffer->text("");
+    }
+
+    void TextTwistWindow::addToScore(int wordLength)
+    {
+        const int multiplier = 10;
+        int pointsPerLetter = multiplier * wordLength;
+        this->score += pointsPerLetter * wordLength;
+    }
+
+    void TextTwistWindow::updateScoreDisplay()
+    {
+        cout << "Score: " << to_string(this->score) << endl;
+        this->currentScoreBuffer->text(to_string(this->score).c_str());
     }
 }
