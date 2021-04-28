@@ -156,24 +156,21 @@ namespace view {
 
     void TextTwistWindow::cbTwistLetters(Fl_Widget* widget, void* data)
     {
+        int padding = 45;
+
         TextTwistWindow* window = (TextTwistWindow*)data;
-        vector<string> currentLetters;
-        for (auto & currentButton : window->letterButtons)
-        {
-            currentLetters.push_back(currentButton->label());
-        }
 
         srand(time(0));
-        random_shuffle(currentLetters.begin(), currentLetters.end());
+        random_shuffle(window->letterButtons.begin(), window->letterButtons.end());
 
-        int index = 0;
+
+        vector<string> currentLetters;
+        int counter = 0;
         for (auto & currentButton : window->letterButtons)
         {
-            string letter = currentLetters.at(index);
-            char* letterToChangeTo = new char[letter.length() + 1];
-            strcpy(letterToChangeTo, letter.c_str());
-            currentButton->label(letterToChangeTo);
-            index++;
+            currentButton->position((counter * 77) + padding, window->windowHeight - 200);
+            counter++;
+            currentButton->redraw();
         }
     }
 
