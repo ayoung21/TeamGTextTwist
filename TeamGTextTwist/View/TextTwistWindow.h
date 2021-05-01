@@ -47,10 +47,13 @@ namespace view {
             Fl_Button* newGameButton;
             Fl_Button* submitWordButton;
             Fl_Button* twistLettersButton;
+            Fl_Button* undoLetterButton;
+            Fl_Button* undoAllButton;
             vector<string> wordList;
             vector<Fl_Button*> letterButtons;
             vector<string> letters;
             vector<string> validWordsSubmitted;
+            vector<Fl_Button*> buttonsSelected;
             string userWord;
             Fl_Text_Buffer *currentUserGuessBuffer;
             Fl_Text_Display *currentUserGuessDisplay;
@@ -73,6 +76,8 @@ namespace view {
             static void cbLetterSelected(Fl_Widget* widget, void* data);
             static void cbSubmitWord(Fl_Widget* widget, void* data);
             static void cbTwistLetters(Fl_Widget* widget, void* data);
+            static void cbUndoLetter(Fl_Widget* widget, void* data);
+            static void cbUndoAll(Fl_Widget* widget, void* data);
             bool isValidWord();
             void enableLetterButtons();
             void clearUserGuess();
@@ -81,6 +86,7 @@ namespace view {
             void reduceScore();
             void updateValidWordsDisplay();
             bool isDuplicatedWordSubmission(string& userSubmittedWord);
+            void undoLastGuess();
     };
 }
 #endif // TEXTTWISTWINDOW_H

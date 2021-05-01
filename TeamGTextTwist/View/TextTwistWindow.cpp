@@ -31,11 +31,17 @@ namespace view {
         this->twistLettersButton = new Fl_Button(200, height - 100, 125, 50, "Twist Letters");
         this->twistLettersButton->callback(cbTwistLetters, this);
 
+        this->undoLetterButton = new Fl_Button(200, this->windowHeight - 250, 75, 25, "Undo");
+        this->undoLetterButton->callback(cbUndoLetter, this);
+
+        this->undoAllButton = new Fl_Button(300, this->windowHeight - 250, 75, 25, "Undo All");
+        this->undoAllButton->callback(cbUndoAll, this);
+
         this->initializeLetters();
         this->initializeGamePlayButtons();
 
         this->currentUserGuessBuffer = new Fl_Text_Buffer();
-        this->currentUserGuessDisplay = new Fl_Text_Display(45, this->windowHeight - 250, 275, 25);
+        this->currentUserGuessDisplay = new Fl_Text_Display(45, this->windowHeight - 250, 125, 25);
         this->currentUserGuessDisplay->textfont(FL_COURIER);
         this->currentUserGuessDisplay->buffer(currentUserGuessBuffer);
 
@@ -78,12 +84,36 @@ namespace view {
         TextTwistWindow* window = (TextTwistWindow*)data;
         window->userWord.append(widget->label());
         window->currentUserGuessBuffer->text(window->userWord.c_str());
+        window->buttonsSelected.push_back((Fl_Button*) widget);
         widget->deactivate();
 
         if (window->userWord.length() >= window->MIN_LETTERS_TO_SUBMIT)
         {
             window->submitWordButton->activate();
         }
+    }
+
+    void TextTwistWindow::cbUndoLetter(Fl_Widget*, void* data)
+    {
+        TextTwistWindow* window = (TextTwistWindow*)data;
+
+        int sizeOfVector = window->buttonsSelected.size();
+        if (sizeOfVector > 0)
+        {
+            window->buttonsSelected[sizeOfVector - 1]->activate();
+            window->buttonsSelected.pop_back();
+
+            window->undoLastGuess();
+        }
+
+    }
+
+    void TextTwistWindow::cbUndoAll(Fl_Widget*, void* data)
+    {
+        TextTwistWindow* window = (TextTwistWindow*)data;
+
+        window->clearUserGuess();
+        window->enableLetterButtons();
     }
 
     void TextTwistWindow::cbNewGame(Fl_Widget* widget, void* data)
@@ -109,14 +139,6 @@ namespace view {
         this->duplicateWordSubmissionLabel->hide();
         this->validWordsSubmitted.clear();
         this->updateValidWordsDisplay();
-    }
-
-    void TextTwistWindow::enableLetterButtons()
-    {
-        for (auto & button : letterButtons)
-        {
-            button->activate();
-        }
     }
 
     void TextTwistWindow::cbSubmitWord(Fl_Widget* widget, void* data)
@@ -288,6 +310,23 @@ namespace view {
     {
         this->userWord = "";
         this->currentUserGuessBuffer->text("");
+    }
+
+    void TextTwistWindow::enableLetterButtons()
+    {
+        for (auto & button : letterButtons)
+        {
+            button->activate();
+        }
+    }
+
+    void TextTwistWindow::undoLastGuess()
+    {
+        this->userWord = this->userWord.substr(0, this->userWord.size() - 1);
+        char* newUserWord = new char[userWord.length() + 1];
+        strcpy(newUserWord, userWord.c_str());
+
+        this->currentUserGuessBuffer->text(newUserWord);
     }
 
     void TextTwistWindow::addToScore(int wordLength)
