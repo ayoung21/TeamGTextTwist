@@ -235,68 +235,8 @@ namespace view {
 
     void TextTwistWindow::initializeLetters()
     {
-        const int MAX_FREQUENCY = 11;
-        for (int index = 0; index < MAX_FREQUENCY; index++)
-        {
-            if (index < 1)
-            {
-
-                this->letters.push_back("j");
-                this->letters.push_back("k");
-                this->letters.push_back("q");
-                this->letters.push_back("x");
-                this->letters.push_back("z");
-
-            }
-            if (index < 2)
-            {
-                this->letters.push_back("b");
-                this->letters.push_back("c");
-                this->letters.push_back("g");
-                this->letters.push_back("g");
-                this->letters.push_back("m");
-                this->letters.push_back("p");
-                this->letters.push_back("v");
-
-            }
-            if (index < 3)
-            {
-
-                this->letters.push_back("d");
-                this->letters.push_back("u");
-                this->letters.push_back("w");
-                this->letters.push_back("y");
-
-            }
-            if (index < 4)
-            {
-                this->letters.push_back("l");
-            }
-            if (index < 5)
-            {
-                this->letters.push_back("h");
-                this->letters.push_back("r");
-            }
-            if (index < 6)
-            {
-                this->letters.push_back("a");
-                this->letters.push_back("i");
-                this->letters.push_back("n");
-                this->letters.push_back("s");
-            }
-            if (index < 8)
-            {
-                this->letters.push_back("o");
-            }
-            if (index < 9)
-            {
-                this->letters.push_back("t");
-            }
-
-            this->letters.push_back("e");
-        }
-
-        cout << "Size of Letters Vector: " << this->letters.size() << endl;
+        // Utils::initalizeLetters
+        initalizeLetters(this->letters);
     }
 
     void TextTwistWindow::initializeGamePlayButtons()

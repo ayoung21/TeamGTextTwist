@@ -17,6 +17,8 @@ using namespace std;
 #include "FileIO.h"
 using namespace fileIO;
 
+#include "Utils.h"
+
 namespace view {
     class TextTwistWindow : public Fl_Window
     {
