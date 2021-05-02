@@ -1,11 +1,20 @@
 #include "Leaderboard.h"
 
+namespace model
+{
 Leaderboard::Leaderboard()
 {
-    //ctor
+
 }
 
 Leaderboard::~Leaderboard()
 {
     //dtor
 }
+
+void Leaderboard::addPlayer(Player player)
+{
+
+}
+}
+
