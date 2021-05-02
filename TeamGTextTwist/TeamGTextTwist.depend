@@ -113,3 +113,9 @@
 1619971470 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/controller/GameManager.cpp
 	"GameManager.h"
 
+1619973555 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/model/Player.cpp
+	"Player.h"
+
+1619973562 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/model/Player.h
+	<string>
+
