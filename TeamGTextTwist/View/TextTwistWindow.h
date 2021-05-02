@@ -19,6 +19,7 @@ using namespace controller;
 
 #include "Utils.h"
 #include "SettingsWindow.h"
+#include "HighScoreWindow.h"
 
 namespace view {
     class TextTwistWindow : public Fl_Window

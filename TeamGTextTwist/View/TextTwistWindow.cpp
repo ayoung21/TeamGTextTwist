@@ -30,13 +30,12 @@ namespace view {
         this->submitWordButton = new Fl_Button(45, height - 100, 125, 50, "Submit");
         this->submitWordButton->callback(cbSubmitWord, this);
 
-        this->settingsButton = new Fl_Button(DEFAULT_PADDING * 5, DEFAULT_PADDING, 125, 50, "Coming Soon");
+        this->settingsButton = new Fl_Button(DEFAULT_PADDING * 5, DEFAULT_PADDING, 125, 50, "Settings");
         this->settingsButton->callback(cbOpenSettings, this);
 
 
-        this->highScoreButton = new Fl_Button(DEFAULT_PADDING * 5, DEFAULT_PADDING * 3, 125, 50, "Coming Soon");
-        this->highScoreButton->deactivate();
-        // TODO: Callback for high score button
+        this->highScoreButton = new Fl_Button(DEFAULT_PADDING * 5, DEFAULT_PADDING * 3, 125, 50, "Scoreboard");
+        this->highScoreButton->callback(cbOpenScoreBoard, this);
 
         this->twistLettersButton = new Fl_Button(200, height - 100, 125, 50, "Twist Letters");
         this->twistLettersButton->callback(cbTwistLetters, this);
@@ -97,6 +96,27 @@ namespace view {
         }
 
         if (settingsWindow.getWindowResult() == OkCancelWindow::WindowResult::OK)
+        {
+            // TODO: Apply Settings
+        }
+        else
+        {
+            cout << "Cancel or closed window." << endl;
+        }
+    }
+
+    void TextTwistWindow::cbOpenScoreBoard(Fl_Widget* widget, void* data)
+    {
+        HighScoreWindow highScoreWindow;
+        highScoreWindow.set_modal();
+        highScoreWindow.show();
+
+        while (highScoreWindow.shown())
+        {
+            Fl::wait();
+        }
+
+        if (highScoreWindow.getWindowResult() == OkCancelWindow::WindowResult::OK)
         {
             // TODO: Apply Settings
         }
