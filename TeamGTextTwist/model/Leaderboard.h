@@ -14,12 +14,14 @@ public:
     Leaderboard();
     virtual ~Leaderboard();
 
-    void addPlayer(Player player);
+    void addPlayer(Player& player);
+    int getNumberOfPlayers();
 
 protected:
 
 private:
     vector<Player> players;
+    int numberOfPlayers;
 
 };
 }
