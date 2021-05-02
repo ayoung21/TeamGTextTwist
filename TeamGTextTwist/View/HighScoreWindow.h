@@ -1,24 +1,22 @@
 #ifndef HIGHSCOREWINDOW_H
 #define HIGHSCOREWINDOW_H
 
-#include "Student.h"
-using namespace model;
-
+#include "OkCancelWindow.h"
 #include <Fl/Fl_Input.H>
 
 namespace view
 {
-    class HighScoreWindow : public OKCancelWindow
+    class HighScoreWindow : public OkCancelWindow
     {
         public:
             HighScoreWindow();
             virtual ~HighScoreWindow();
-            void okHandler();
 
         protected:
 
         private:
-            Fl_Output *highScoreLabel;
+            void okHandler();
+            void cancelHandler();
     };
 }
 
