@@ -48,13 +48,13 @@
 	<vector>
 	<iostream>
 
-1619927411 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/main.cpp
+1619971470 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/main.cpp
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Box.H>
 	"TextTwistWindow.h"
 
-1619927411 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/TextTwistWindow.h
+1619971470 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/TextTwistWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Group.H>
@@ -65,13 +65,14 @@
 	<FL/Fl_Button.H>
 	<vector>
 	<string>
-	"FileIO.h"
+	"GameManager.h"
+	"Utils.h"
 
-1619927411 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/IO/FileIO.h
+1619971470 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/IO/FileIO.h
 	<vector>
 	<string>
 
-1619927411 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/TextTwistWindow.cpp
+1619971470 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/TextTwistWindow.cpp
 	"TextTwistWindow.h"
 	<FL/fl_types.h>
 	<Fl/fl_draw.H>
@@ -82,10 +83,12 @@
 	<string>
 	"Utils.h"
 
-1619927411 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/Utils/Utils.h
+1619971470 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/Utils/Utils.h
 	<string>
+	<vector>
+	<iostream>
 
-1619927411 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/IO/FileIO.cpp
+1619971470 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/IO/FileIO.cpp
 	"FileIO.h"
 	<iostream>
 	<fstream>
@@ -101,4 +104,12 @@
 	"Utils.h"
 	<string>
 	"FileIO.h"
+
+1619971470 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/controller/GameManager.h
+	"Utils.h"
+	<string>
+	"FileIO.h"
+
+1619971470 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/controller/GameManager.cpp
+	"GameManager.h"
 
