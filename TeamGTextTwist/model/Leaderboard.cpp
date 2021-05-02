@@ -5,7 +5,7 @@ namespace model
 //Instantiates a new leaderboard
 Leaderboard::Leaderboard()
 {
-
+    this->players.reserve(10);
 }
 
 Leaderboard::~Leaderboard()
