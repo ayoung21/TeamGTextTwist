@@ -26,7 +26,7 @@ void Leaderboard::addPlayer(Player& player)
     {
         this->players.push_back(player);
     }
-    this->numberOfPlayer++;
+    this->numberOfPlayers++;
 
 }
 
