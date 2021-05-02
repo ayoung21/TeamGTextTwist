@@ -31,8 +31,8 @@ namespace view {
         this->submitWordButton->callback(cbSubmitWord, this);
 
         this->settingsButton = new Fl_Button(DEFAULT_PADDING * 5, DEFAULT_PADDING, 125, 50, "Coming Soon");
-        this->settingsButton->deactivate();
-        // TODO: Callback for settings button
+        this->settingsButton->callback(cbOpenSettings, this);
+
 
         this->highScoreButton = new Fl_Button(DEFAULT_PADDING * 5, DEFAULT_PADDING * 3, 125, 50, "Coming Soon");
         this->highScoreButton->deactivate();
@@ -83,6 +83,27 @@ namespace view {
     TextTwistWindow::~TextTwistWindow()
     {
         //dtor
+    }
+
+    void TextTwistWindow::cbOpenSettings(Fl_Widget* widget, void* data)
+    {
+        SettingsWindow settingsWindow;
+        settingsWindow.set_modal();
+        settingsWindow.show();
+
+        while (settingsWindow.shown())
+        {
+            Fl::wait();
+        }
+
+        if (settingsWindow.getWindowResult() == OkCancelWindow::WindowResult::OK)
+        {
+            // TODO: Apply Settings
+        }
+        else
+        {
+            cout << "Cancel or closed window." << endl;
+        }
     }
 
     void TextTwistWindow::cbOnTick(void* data)

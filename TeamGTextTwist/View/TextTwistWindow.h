@@ -18,6 +18,7 @@ using namespace std;
 using namespace controller;
 
 #include "Utils.h"
+#include "SettingsWindow.h"
 
 namespace view {
     class TextTwistWindow : public Fl_Window
@@ -87,6 +88,8 @@ namespace view {
             static void cbUndoAll(Fl_Widget* widget, void* data);
             static void cbStartGame(Fl_Widget* widget, void* data);
             static void cbOnTick(void* data);
+            static void cbOpenSettings(Fl_Widget* widget, void* data);
+            static void cbOpenScoreBoard(Fl_Widget* widget, void* data);
             void enableLetterButtons();
             void clearUserGuess();
             void addToScore(int wordLength);
