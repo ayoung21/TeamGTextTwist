@@ -49,6 +49,8 @@ namespace view {
             int centerYPosition;
             Fl_Button* newGameButton;
             Fl_Button* startGameButton;
+            Fl_Button* settingsButton; // ...
+            Fl_Button* highScoreButton; // ...
             Fl_Button* submitWordButton;
             Fl_Button* twistLettersButton;
             Fl_Button* undoLetterButton;
