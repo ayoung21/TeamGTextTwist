@@ -65,7 +65,7 @@ namespace view {
         this->validWordsSubmittedDisplay->textfont(FL_COURIER);
         this->validWordsSubmittedDisplay->buffer(validWordsSubmittedBuffer);
 
-        this->fileIO.createWordListFromFile(this->wordList);
+        // this->fileIO.createWordListFromFile(this->wordList);
 
         this->disableGameplayUI();
         this->updateTimerLabel();
@@ -142,6 +142,7 @@ namespace view {
 
         window->clearUserGuess();
         window->enableLetterButtons();
+        window->submitWordButton->deactivate();
     }
 
     void TextTwistWindow::cbNewGame(Fl_Widget* widget, void* data)
@@ -179,7 +180,7 @@ namespace view {
         TextTwistWindow* window = (TextTwistWindow*)data;
         window->duplicateWordSubmissionLabel->hide();
 
-        if (window->isValidWord())
+        if (window->gameManager.isValidWord(window->userWord))
         {
             if (window->isDuplicatedWordSubmission(window->userWord))
             {
@@ -261,22 +262,6 @@ namespace view {
         random_shuffle(this->letters.begin(), this->letters.end());
         string letter = this->letters.at(0);
         return letter;
-    }
-
-    bool TextTwistWindow::isValidWord()
-    {
-        string userInputUpper = toUpperCase(this->userWord);
-        for (string word : this->wordList)
-        {
-            string wordUpper = toUpperCase(word);
-
-            if (userInputUpper.compare(wordUpper) == 0)
-            {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     void TextTwistWindow::clearUserGuess()

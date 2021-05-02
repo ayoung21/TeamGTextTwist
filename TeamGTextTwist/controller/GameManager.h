@@ -1,18 +1,29 @@
 #ifndef GAMEMANAGER_H
 #define GAMEMANAGER_H
 
+#include "Utils.h"
+
+#include <string>
+using namespace std;
+
+#include "FileIO.h"
+using namespace fileIO;
 
 namespace controller
 {
     class GameManager
     {
-    public:
-        GameManager();
-        virtual ~GameManager();
+        public:
+            GameManager();
+            virtual ~GameManager();
 
-    protected:
+            bool isValidWord(string word);
 
-    private:
+        protected:
+
+        private:
+            FileIO fileIO;
+            vector<string> wordList;
     };
 }
 

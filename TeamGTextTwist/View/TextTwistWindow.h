@@ -14,8 +14,8 @@
 #include <string>
 using namespace std;
 
-#include "FileIO.h"
-using namespace fileIO;
+#include "GameManager.h"
+using namespace controller;
 
 #include "Utils.h"
 
@@ -41,7 +41,8 @@ namespace view {
             /*
             ** Private Member Variables
             */
-            FileIO fileIO;
+            // FileIO fileIO;
+            GameManager gameManager;
             int windowWidth;
             int windowHeight;
             int centerXPosition;
@@ -52,7 +53,6 @@ namespace view {
             Fl_Button* twistLettersButton;
             Fl_Button* undoLetterButton;
             Fl_Button* undoAllButton;
-            vector<string> wordList;
             vector<Fl_Button*> letterButtons;
             vector<string> letters;
             vector<string> validWordsSubmitted;
@@ -85,7 +85,6 @@ namespace view {
             static void cbUndoAll(Fl_Widget* widget, void* data);
             static void cbStartGame(Fl_Widget* widget, void* data);
             static void cbOnTick(void* data);
-            bool isValidWord();
             void enableLetterButtons();
             void clearUserGuess();
             void addToScore(int wordLength);
@@ -99,7 +98,6 @@ namespace view {
             void startGame();
             void disableGameplayUI();
             void enableGameplayUI();
-
             void stopTick();
     };
 }
