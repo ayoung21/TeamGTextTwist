@@ -5,7 +5,7 @@
 	<FL/Fl_Box.H>
 	"TextTwistWindow.h"
 
-1619895636 /home/ayoung21/Desktop/TextTwist/TeamGTextTwist/View/TextTwistWindow.h
+1619958911 /home/ayoung21/Desktop/TextTwist/TeamGTextTwist/View/TextTwistWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Group.H>
@@ -18,7 +18,7 @@
 	<string>
 	"FileIO.h"
 
-1619895559 source:/home/ayoung21/Desktop/TextTwist/TeamGTextTwist/View/TextTwistWindow.cpp
+1619956920 source:/home/ayoung21/Desktop/TextTwist/TeamGTextTwist/View/TextTwistWindow.cpp
 	"TextTwistWindow.h"
 	<FL/fl_types.h>
 	<Fl/fl_draw.H>
@@ -90,4 +90,9 @@
 1619927411 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/Utils/Utils.cpp
 	"Utils.h"
 	<algorithm>
+
+1619955542 source:/home/ayoung21/Desktop/TextTwist/TeamGTextTwist/controller/GameManager.cpp
+	"GameManager.h"
+
+1619955549 /home/ayoung21/Desktop/TextTwist/TeamGTextTwist/controller/GameManager.h
 

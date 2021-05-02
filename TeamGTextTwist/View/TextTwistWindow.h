@@ -45,6 +45,7 @@ namespace view {
             int centerXPosition;
             int centerYPosition;
             Fl_Button* newGameButton;
+            Fl_Button* startGameButton;
             Fl_Button* submitWordButton;
             Fl_Button* twistLettersButton;
             Fl_Button* undoLetterButton;
@@ -63,7 +64,9 @@ namespace view {
             Fl_Text_Display *validWordsSubmittedDisplay;
             Fl_Output *currentScoreLabel;
             Fl_Output *duplicateWordSubmissionLabel;
+            Fl_Output *timerLabel;
             int score = 0;
+            int gameTime = 60;
 
             /*
             ** Private Methods
@@ -78,6 +81,8 @@ namespace view {
             static void cbTwistLetters(Fl_Widget* widget, void* data);
             static void cbUndoLetter(Fl_Widget* widget, void* data);
             static void cbUndoAll(Fl_Widget* widget, void* data);
+            static void cbStartGame(Fl_Widget* widget, void* data);
+            static void cbOnTick(void* data);
             bool isValidWord();
             void enableLetterButtons();
             void clearUserGuess();
@@ -87,6 +92,13 @@ namespace view {
             void updateValidWordsDisplay();
             bool isDuplicatedWordSubmission(string& userSubmittedWord);
             void undoLastGuess();
+            void updateTimerLabel();
+            void onTick();
+            void startGame();
+            void disableGameplayUI();
+            void enableGameplayUI();
+
+            void stopTick();
     };
 }
 #endif // TEXTTWISTWINDOW_H

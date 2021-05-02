@@ -2,13 +2,13 @@
 
 namespace controller
 {
-GameManager::GameManager()
-{
-    //ctor
-}
+    GameManager::GameManager()
+    {
+        //ctor
+    }
 
-GameManager::~GameManager()
-{
-    //dtor
-}
+    GameManager::~GameManager()
+    {
+        //dtor
+    }
 }

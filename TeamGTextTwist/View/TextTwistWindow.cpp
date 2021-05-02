@@ -24,9 +24,12 @@ namespace view {
         this->newGameButton = new Fl_Button(DEFAULT_PADDING, DEFAULT_PADDING, 125, 50, "New Game");
         this->newGameButton->callback(cbNewGame, this);
 
+        this->startGameButton = new Fl_Button(DEFAULT_PADDING, DEFAULT_PADDING * 3, 125, 50, "Start Game");
+        this->startGameButton->callback(cbStartGame, this);
+
         this->submitWordButton = new Fl_Button(45, height - 100, 125, 50, "Submit");
         this->submitWordButton->callback(cbSubmitWord, this);
-        this->submitWordButton->deactivate();
+        // this->submitWordButton->deactivate();
 
         this->twistLettersButton = new Fl_Button(200, height - 100, 125, 50, "Twist Letters");
         this->twistLettersButton->callback(cbTwistLetters, this);
@@ -49,6 +52,8 @@ namespace view {
         this->duplicateWordSubmissionLabel = new Fl_Output(300, this->windowHeight - 260, 100, 0, "Word has already been submitted...");
         this->duplicateWordSubmissionLabel->hide();
 
+        this->timerLabel = new Fl_Output(125, this->windowHeight - 300, 100, 0, "");
+
         this->currentScoreBuffer = new Fl_Text_Buffer();
         this->currentScoreDisplay = new Fl_Text_Display(this->windowWidth - 100, DEFAULT_PADDING, 50, 25);
         this->currentScoreDisplay->textfont(FL_COURIER);
@@ -62,12 +67,35 @@ namespace view {
 
         this->fileIO.createWordListFromFile(this->wordList);
 
+        this->disableGameplayUI();
+        this->updateTimerLabel();
+
         end();
     }
 
     TextTwistWindow::~TextTwistWindow()
     {
         //dtor
+    }
+
+    void TextTwistWindow::cbOnTick(void* data)
+    {
+        TextTwistWindow* window = (TextTwistWindow*)data;
+        window->onTick();
+        window->updateTimerLabel();
+        Fl::repeat_timeout(1.0, cbOnTick, window);
+    }
+
+    void TextTwistWindow::stopTick()
+    {
+        Fl::remove_timeout(cbOnTick);
+    }
+
+    void TextTwistWindow::cbStartGame(Fl_Widget* widget, void* data)
+    {
+        TextTwistWindow* window = (TextTwistWindow*)data;
+        Fl::add_timeout(1.0, cbOnTick, (void*) window);
+        window->startGame();
     }
 
     //
@@ -135,10 +163,15 @@ namespace view {
         this->enableLetterButtons();
         this->submitWordButton->deactivate();
         this->score = 0;
+        this->gameTime = 60;
         this->updateScoreDisplay();
         this->duplicateWordSubmissionLabel->hide();
         this->validWordsSubmitted.clear();
         this->updateValidWordsDisplay();
+
+        this->disableGameplayUI();
+        this->stopTick();
+        this->updateTimerLabel();
     }
 
     void TextTwistWindow::cbSubmitWord(Fl_Widget* widget, void* data)
@@ -371,5 +404,45 @@ namespace view {
         }
 
         return false;
+    }
+
+    void TextTwistWindow::onTick()
+    {
+        this->gameTime--;
+    }
+
+    void TextTwistWindow::updateTimerLabel()
+    {
+        string timeAsString = to_string(this->gameTime);
+        char* timeLabel = new char[timeAsString.length() + 1];
+        strcpy(timeLabel, timeAsString.c_str());
+
+        this->timerLabel->label(timeLabel);
+    }
+
+    void TextTwistWindow::startGame()
+    {
+        this->enableGameplayUI();
+    }
+
+    void TextTwistWindow::disableGameplayUI()
+    {
+        for (Fl_Button* currentButton : this->letterButtons)
+        {
+            currentButton->deactivate();
+        }
+
+        this->submitWordButton->deactivate();
+        this->twistLettersButton->deactivate();
+        this->undoLetterButton->deactivate();
+        this->undoAllButton->deactivate();
+    }
+
+    void TextTwistWindow::enableGameplayUI()
+    {
+        this->enableLetterButtons();
+        this->twistLettersButton->activate();
+        this->undoLetterButton->activate();
+        this->undoAllButton->activate();
     }
 }

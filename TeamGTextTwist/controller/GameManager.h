@@ -4,16 +4,16 @@
 
 namespace controller
 {
-class GameManager
-{
-public:
-    GameManager();
-    virtual ~GameManager();
+    class GameManager
+    {
+    public:
+        GameManager();
+        virtual ~GameManager();
 
-protected:
+    protected:
 
-private:
-};
+    private:
+    };
 }
 
 #endif // GAMEMANAGER_H
