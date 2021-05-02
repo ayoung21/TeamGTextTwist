@@ -12,6 +12,8 @@ public:
     Player(const string& name, int score, int time);
     virtual ~Player();
 
+    const string toString();
+
 protected:
 
 private:

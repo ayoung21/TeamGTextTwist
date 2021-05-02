@@ -13,4 +13,9 @@ Player::~Player()
 {
     //dtor
 }
+
+const string Player::toString()
+{
+    return this->name + " " + to_string(this->score) + " points " + to_string(this->time) + " seconds";
+}
 }
