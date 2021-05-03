@@ -58,8 +58,6 @@ namespace view {
         this->duplicateWordSubmissionLabel = new Fl_Output(300, this->windowHeight - 260, 100, 0, "Word has already been submitted...");
         this->duplicateWordSubmissionLabel->hide();
 
-        this->timerLabel = new Fl_Output(125, this->windowHeight - 300, 100, 0, "");
-
         this->currentScoreBuffer = new Fl_Text_Buffer();
         this->currentScoreDisplay = new Fl_Text_Display(this->windowWidth - 100, DEFAULT_PADDING, 50, 25);
         this->currentScoreDisplay->textfont(FL_COURIER);
@@ -71,10 +69,13 @@ namespace view {
         this->validWordsSubmittedDisplay->textfont(FL_COURIER);
         this->validWordsSubmittedDisplay->buffer(validWordsSubmittedBuffer);
 
-        // this->fileIO.createWordListFromFile(this->wordList);
+        this->gameTimeBuffer = new Fl_Text_Buffer();
+        this->gameTimeDisplay = new Fl_Text_Display(45, this->windowHeight - 300, 50, 25);
+        this->gameTimeDisplay->textfont(FL_COURIER);
+        this->gameTimeDisplay->buffer(gameTimeBuffer);
 
         this->disableGameplayUI();
-        this->updateTimerLabel("TIME: " + to_string(this->gameTime));
+        this->updateTimerLabel();
 
         end();
     }
@@ -220,7 +221,7 @@ namespace view {
         this->updateValidWordsDisplay();
         this->disableGameplayUI();
         this->stopTick();
-        this->updateTimerLabel("");
+        this->updateTimerLabel();
         this->startGameButton->activate();
     }
 
@@ -373,26 +374,25 @@ namespace view {
         else
         {
             this->gameTime--;
-            string textForTimerLabel = "Time: " + to_string(this->gameTime);
-            this->updateTimerLabel(textForTimerLabel);
+            this->updateTimerLabel();
         }
     }
 
     void TextTwistWindow::onGameOver()
     {
         this->stopTick();
-        this->updateTimerLabel("GAME OVER");
         this->disableGameplayUI();
     }
 
-    void TextTwistWindow::updateTimerLabel(string word)
+    void TextTwistWindow::updateTimerLabel()
     {
-        this->timerLabel->copy_label(word.c_str());
+        this->gameTimeBuffer->text(to_string(this->gameTime).c_str());
     }
 
     void TextTwistWindow::startGame()
     {
         this->enableGameplayUI();
+        this->gameTimeBuffer->text(to_string(this->gameTime).c_str());
     }
 
     void TextTwistWindow::disableGameplayUI()

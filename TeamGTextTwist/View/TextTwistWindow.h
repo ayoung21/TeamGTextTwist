@@ -39,7 +39,7 @@ namespace view {
             */
             const int DEFAULT_PADDING = 45;
             const int MIN_LETTERS_TO_SUBMIT = 3;
-            const int DEFAULT_GAMEPLAY_TIME = 15;
+            const int DEFAULT_GAMEPLAY_TIME = 60;
 
             /*
             ** Private Member Variables
@@ -68,6 +68,8 @@ namespace view {
             Fl_Text_Display *currentScoreDisplay;
             Fl_Text_Buffer *validWordsSubmittedBuffer;
             Fl_Text_Display *validWordsSubmittedDisplay;
+            Fl_Text_Buffer *gameTimeBuffer;
+            Fl_Text_Display *gameTimeDisplay;
             Fl_Output *currentScoreLabel;
             Fl_Output *duplicateWordSubmissionLabel;
             Fl_Output *timerLabel;
@@ -99,7 +101,7 @@ namespace view {
             void updateValidWordsDisplay();
             bool isDuplicatedWordSubmission(string& userSubmittedWord);
             void undoLastGuess();
-            void updateTimerLabel(string word);
+            void updateTimerLabel();
             void onTick();
             void startGame();
             void disableGameplayUI();
