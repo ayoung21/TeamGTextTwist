@@ -3,6 +3,7 @@
 #include "Utils.h"
 
 #include <Fl/fl_ask.H>
+#include <FL/fl_types.h>
 #include <sstream>
 using namespace std;
 
@@ -14,8 +15,10 @@ namespace view
         this->setOKLocation(90, 140);
         this->setCancelLocation(170, 140);
 
-        this->leaderBoard = new Fl_Text_Buffer();
+        this->leaderBoardBuffer = new Fl_Text_Buffer();
         this->leaderBoardTextDisplay = new Fl_Text_Display(45, 30, 200, 100);
+        this->leaderBoardTextDisplay->textfont(FL_COURIER);
+        this->leaderBoardTextDisplay->buffer(leaderBoardBuffer);
         end();
     }
 

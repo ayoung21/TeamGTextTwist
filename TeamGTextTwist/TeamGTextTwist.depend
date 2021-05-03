@@ -172,7 +172,7 @@
 	<Fl/Fl_Window.H>
 	<Fl/Fl_Button.H>
 
-1620074804 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/HighScoreWindow.h
+1620080925 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/HighScoreWindow.h
 	"OkCancelWindow.h"
 	<Fl/Fl_Input.H>
 	<FL/Fl_Text_Buffer.H>
@@ -187,10 +187,11 @@
 1620019020 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/model/Leaderboard.cpp
 	"Leaderboard.h"
 
-1620011454 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/HighScoreWindow.cpp
+1620081066 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/HighScoreWindow.cpp
 	"HighScoreWindow.h"
 	"Utils.h"
 	<Fl/fl_ask.H>
+	<FL/fl_types.h>
 	<sstream>
 
 1620011454 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/OkCancelWindow.cpp

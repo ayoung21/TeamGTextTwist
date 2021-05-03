@@ -23,7 +23,7 @@ namespace view
             void okHandler();
             void cancelHandler();
 
-            Fl_Text_Buffer *leaderBoard;
+            Fl_Text_Buffer *leaderBoardBuffer;
             Fl_Text_Display *leaderBoardTextDisplay;
     };
 }
