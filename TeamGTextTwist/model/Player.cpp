@@ -53,40 +53,4 @@ const string Player::toString()
 {
     return this->name + " " + to_string(this->score) + " points " + to_string(this->time) + " seconds";
 }
-
-//Compare two players
-//
-//@precondition none
-//@postcondition none
-//
-//@param otherPlayer
-//      the player to compare to
-//
-//@return
-int Player::compareTo(Player* otherPlayer)
-{
-    if (this->score < otherPlayer->getScore())
-    {
-        return -1;
-    }
-    else if (this->score > otherPlayer->getScore())
-    {
-        return 1;
-    }
-    else
-    {
-        if (this->time < otherPlayer->getTime())
-        {
-            return -1;
-        }
-        else if (this->time > otherPlayer->getTime())
-        {
-
-        }
-        else
-        {
-            return 0;
-        }
-    }
-}
 }

@@ -22,17 +22,37 @@ Leaderboard::~Leaderboard()
 //      The player to add to the leader board
 void Leaderboard::addPlayer(Player& player)
 {
-    if (this->numberOfPlayers == 0)
-    {
-        this->players.push_back(player);
-    }
+    this->players.push_back(player);
     this->numberOfPlayers++;
+    this->sortPlayers();
 
 }
 
+void Leaderboard::sortPlayers()
+{
+    sort(players.begin(), players.end(), greater<Player>());
+}
+
+//Gets the number of players
+//
+//@precondition none
+//@postcondition none
+//
+//@return the number of players in the leaderboard
 int Leaderboard::getNumberOfPlayers()
 {
     return this->numberOfPlayers;
+}
+
+//Gets the players in the vector
+//
+//@precondition none
+//@postcondition none
+//
+//@return the vector of players
+vector<Player> Leaderboard::getPlayers()
+{
+    return this->players;
 }
 }
 

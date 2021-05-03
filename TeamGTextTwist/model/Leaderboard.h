@@ -2,6 +2,7 @@
 #define LEADERBOARD_H
 
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 #include "Player.h"
@@ -16,12 +17,14 @@ public:
 
     void addPlayer(Player& player);
     int getNumberOfPlayers();
+    vector<Player> getPlayers();
 
 protected:
 
 private:
     vector<Player> players;
     int numberOfPlayers;
+    void sortPlayers();
 
 };
 }

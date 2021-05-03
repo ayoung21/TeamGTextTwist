@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include <string>
+#include <algorithm>
 using namespace std;
 
 namespace model
@@ -17,7 +18,26 @@ public:
     const int getTime();
 
     const string toString();
-    int compareTo(Player* otherPlayer);
+
+    bool operator<(const Player player) const
+    {
+        if (score != player.score)
+        {
+            return score < player.score;
+        }
+
+        return time < player.time;
+    }
+
+    bool operator>(const Player player) const
+    {
+        if (score != player.score)
+        {
+            return score > player.score;
+        }
+
+        return time < player.time;
+    }
 
 protected:
 
