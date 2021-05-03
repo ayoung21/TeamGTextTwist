@@ -39,6 +39,7 @@ namespace view {
             */
             const int DEFAULT_PADDING = 45;
             const int MIN_LETTERS_TO_SUBMIT = 3;
+            const int DEFAULT_GAMEPLAY_TIME = 15;
 
             /*
             ** Private Member Variables
@@ -71,7 +72,7 @@ namespace view {
             Fl_Output *duplicateWordSubmissionLabel;
             Fl_Output *timerLabel;
             int score = 0;
-            int gameTime = 60;
+            int gameTime = DEFAULT_GAMEPLAY_TIME;
 
             /*
             ** Private Methods
@@ -98,12 +99,13 @@ namespace view {
             void updateValidWordsDisplay();
             bool isDuplicatedWordSubmission(string& userSubmittedWord);
             void undoLastGuess();
-            void updateTimerLabel();
+            void updateTimerLabel(string word);
             void onTick();
             void startGame();
             void disableGameplayUI();
             void enableGameplayUI();
             void stopTick();
+            void onGameOver();
     };
 }
 #endif // TEXTTWISTWINDOW_H

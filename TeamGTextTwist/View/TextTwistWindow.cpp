@@ -74,7 +74,7 @@ namespace view {
         // this->fileIO.createWordListFromFile(this->wordList);
 
         this->disableGameplayUI();
-        this->updateTimerLabel();
+        this->updateTimerLabel("TIME: " + to_string(this->gameTime));
 
         end();
     }
@@ -130,7 +130,7 @@ namespace view {
     {
         TextTwistWindow* window = (TextTwistWindow*)data;
         window->onTick();
-        window->updateTimerLabel();
+        // window->updateTimerLabel();
         Fl::repeat_timeout(1.0, cbOnTick, window);
     }
 
@@ -144,6 +144,7 @@ namespace view {
         TextTwistWindow* window = (TextTwistWindow*)data;
         Fl::add_timeout(1.0, cbOnTick, (void*) window);
         window->startGame();
+        window->startGameButton->deactivate();
     }
 
     //
@@ -212,14 +213,15 @@ namespace view {
         this->enableLetterButtons();
         this->submitWordButton->deactivate();
         this->score = 0;
-        this->gameTime = 60;
+        this->gameTime = DEFAULT_GAMEPLAY_TIME;
         this->updateScoreDisplay();
         this->duplicateWordSubmissionLabel->hide();
         this->gameManager.resetGame();
         this->updateValidWordsDisplay();
         this->disableGameplayUI();
         this->stopTick();
-        this->updateTimerLabel();
+        this->updateTimerLabel("");
+        this->startGameButton->activate();
     }
 
     void TextTwistWindow::cbSubmitWord(Fl_Widget* widget, void* data)
@@ -364,16 +366,28 @@ namespace view {
 
     void TextTwistWindow::onTick()
     {
-        this->gameTime--;
+        if (this->gameTime <= 0)
+        {
+            this->onGameOver();
+        }
+        else
+        {
+            this->gameTime--;
+            string textForTimerLabel = "Time: " + to_string(this->gameTime);
+            this->updateTimerLabel(textForTimerLabel);
+        }
     }
 
-    void TextTwistWindow::updateTimerLabel()
+    void TextTwistWindow::onGameOver()
     {
-        string timeAsString = to_string(this->gameTime);
-        char* timeLabel = new char[timeAsString.length() + 1];
-        strcpy(timeLabel, timeAsString.c_str());
+        this->stopTick();
+        this->updateTimerLabel("GAME OVER");
+        this->disableGameplayUI();
+    }
 
-        this->timerLabel->label(timeLabel);
+    void TextTwistWindow::updateTimerLabel(string word)
+    {
+        this->timerLabel->copy_label(word.c_str());
     }
 
     void TextTwistWindow::startGame()
