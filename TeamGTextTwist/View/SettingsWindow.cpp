@@ -23,7 +23,6 @@ namespace view
         begin();
         this->setOKLocation(90, 140);
         this->setCancelLocation(170, 140);
-
         end();
     }
 

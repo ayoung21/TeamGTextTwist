@@ -17,13 +17,18 @@ namespace controller
             GameManager();
             virtual ~GameManager();
 
+            void addPlayerGuess(string word);
             bool isValidWord(string word);
+            bool isDuplicateWordSubmission(string word);
+            vector<string> getValidWordsSubmitted();
+            void resetGame();
 
         protected:
 
         private:
             FileIO fileIO;
             vector<string> wordList;
+            vector<string> validWordsSubmitted;
     };
 }
 

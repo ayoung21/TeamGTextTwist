@@ -51,15 +51,14 @@ namespace view {
             int centerYPosition;
             Fl_Button* newGameButton;
             Fl_Button* startGameButton;
-            Fl_Button* settingsButton; // ...
-            Fl_Button* highScoreButton; // ...
+            Fl_Button* settingsButton;
+            Fl_Button* highScoreButton;
             Fl_Button* submitWordButton;
             Fl_Button* twistLettersButton;
             Fl_Button* undoLetterButton;
             Fl_Button* undoAllButton;
             vector<Fl_Button*> letterButtons;
             vector<string> letters;
-            vector<string> validWordsSubmitted;
             vector<Fl_Button*> buttonsSelected;
             string userWord;
             Fl_Text_Buffer *currentUserGuessBuffer;

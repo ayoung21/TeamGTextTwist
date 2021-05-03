@@ -215,9 +215,8 @@ namespace view {
         this->gameTime = 60;
         this->updateScoreDisplay();
         this->duplicateWordSubmissionLabel->hide();
-        this->validWordsSubmitted.clear();
+        this->gameManager.resetGame();
         this->updateValidWordsDisplay();
-
         this->disableGameplayUI();
         this->stopTick();
         this->updateTimerLabel();
@@ -230,7 +229,7 @@ namespace view {
 
         if (window->gameManager.isValidWord(window->userWord))
         {
-            if (window->isDuplicatedWordSubmission(window->userWord))
+            if (window->gameManager.isDuplicateWordSubmission(window->userWord))
             {
                 window->duplicateWordSubmissionLabel->show();
             }
@@ -238,8 +237,7 @@ namespace view {
             {
                 window->addToScore(window->userWord.length());
                 window->updateScoreDisplay();
-
-                window->validWordsSubmitted.push_back(window->userWord);
+                window->gameManager.addPlayerGuess(window->userWord);
                 window->updateValidWordsDisplay();
             }
 
@@ -357,26 +355,11 @@ namespace view {
     void TextTwistWindow::updateValidWordsDisplay()
     {
         string words = "";
-        for (string word : this->validWordsSubmitted)
+        for (string word : this->gameManager.getValidWordsSubmitted())
         {
             words += word + "\n";
         }
         this->validWordsSubmittedBuffer->text(words.c_str());
-    }
-
-    bool TextTwistWindow::isDuplicatedWordSubmission(string& userSubmittedWord)
-    {
-        string userInputUpper = toUpperCase(this->userWord);
-        for (string word : this->validWordsSubmitted)
-        {
-            string wordUpper = toUpperCase(word);
-            if (userInputUpper.compare(wordUpper) == 0)
-            {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     void TextTwistWindow::onTick()
