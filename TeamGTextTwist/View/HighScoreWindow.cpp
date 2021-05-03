@@ -14,6 +14,8 @@ namespace view
         this->setOKLocation(90, 140);
         this->setCancelLocation(170, 140);
 
+        this->leaderBoard = new Fl_Text_Buffer();
+        this->leaderBoardTextDisplay = new Fl_Text_Display(45, 30, 200, 100);
         end();
     }
 
