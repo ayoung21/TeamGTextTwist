@@ -125,12 +125,6 @@ namespace view
 
     }
 
-    void SettingsWindow::cancelHandler()
-    {
-        this->hide();
-    }
-}
-
 //
 // The instance handler when cancel is invoked
 //
@@ -140,13 +134,5 @@ namespace view
 void SettingsWindow::cancelHandler()
 {
     this->hide();
-}
-
-//
-// Destructor that cleans up all allocated resources for the window
-//
-SettingsWindow::~SettingsWindow()
-{
-    //dtor
 }
 }

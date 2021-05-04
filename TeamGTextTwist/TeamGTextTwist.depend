@@ -56,7 +56,7 @@
 	<FL/Fl_Box.H>
 	"TextTwistWindow.h"
 
-1620060750 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/TextTwistWindow.h
+1620100075 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/TextTwistWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Group.H>
@@ -72,7 +72,7 @@
 	"SettingsWindow.h"
 	"HighScoreWindow.h"
 
-1620096267 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/IO/FileIO.h
+1620100046 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/IO/FileIO.h
 	<vector>
 	<string>
 	<fstream>
@@ -80,7 +80,7 @@
 	"Leaderboard.h"
 	"Player.h"
 
-1620060662 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/TextTwistWindow.cpp
+1620100037 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/TextTwistWindow.cpp
 	"TextTwistWindow.h"
 	<FL/fl_types.h>
 	<Fl/fl_draw.H>
@@ -96,12 +96,12 @@
 	<vector>
 	<iostream>
 
-1620098304 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/IO/FileIO.cpp
+1620103124 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/IO/FileIO.cpp
 	"FileIO.h"
 	<iostream>
 	<fstream>
 
-1620011454 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/Utils/Utils.cpp
+1620103422 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/Utils/Utils.cpp
 	"Utils.h"
 	<algorithm>
 
@@ -113,15 +113,15 @@
 	<string>
 	"FileIO.h"
 
-1620011454 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/controller/GameManager.h
+1620100042 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/controller/GameManager.h
 	"Utils.h"
 	<string>
 	"FileIO.h"
 
-1620011454 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/controller/GameManager.cpp
+1620102959 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/controller/GameManager.cpp
 	"GameManager.h"
 
-1620019036 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/model/Player.cpp
+1620103334 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/model/Player.cpp
 	"Player.h"
 
 1620018820 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/model/Player.h
@@ -168,15 +168,18 @@
 	"OkCancelWindow.h"
 	<Fl/Fl_Input.H>
 
-1620011454 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/SettingsWindow.h
+1620134460 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/SettingsWindow.h
 	"OkCancelWindow.h"
 	<Fl/Fl_Input.H>
+	<FL/Fl_Group.H>
+	<FL/Fl_Round_Button.H>
+	<string>
 
-1620011454 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/OkCancelWindow.h
+1620100069 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/OkCancelWindow.h
 	<Fl/Fl_Window.H>
 	<Fl/Fl_Button.H>
 
-1620094911 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/HighScoreWindow.h
+1620100058 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/HighScoreWindow.h
 	"OkCancelWindow.h"
 	<Fl/Fl_Input.H>
 	<FL/Fl_Text_Buffer.H>
@@ -191,17 +194,17 @@
 	<string.h>
 	"Player.h"
 
-1620098164 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/model/Leaderboard.cpp
+1620103202 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/model/Leaderboard.cpp
 	"Leaderboard.h"
 
-1620098217 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/HighScoreWindow.cpp
+1620103571 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/HighScoreWindow.cpp
 	"HighScoreWindow.h"
 	"Utils.h"
 	<Fl/fl_ask.H>
 	<FL/fl_types.h>
 	<sstream>
 
-1620011454 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/OkCancelWindow.cpp
+1620100026 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/OkCancelWindow.cpp
 	"OkCancelWindow.h"
 
 1620011454 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/SettingsWindow.cpp

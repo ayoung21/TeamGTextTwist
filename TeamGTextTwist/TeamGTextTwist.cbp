@@ -31,6 +31,12 @@
 		<Unit filename="IO/FileIO.h" />
 		<Unit filename="Utils/Utils.cpp" />
 		<Unit filename="Utils/Utils.h" />
+		<Unit filename="View/HighScoreWindow.cpp" />
+		<Unit filename="View/HighScoreWindow.h" />
+		<Unit filename="View/OkCancelWindow.cpp" />
+		<Unit filename="View/OkCancelWindow.h" />
+		<Unit filename="View/SettingsWindow.cpp" />
+		<Unit filename="View/SettingsWindow.h" />
 		<Unit filename="View/TextTwistWindow.cpp" />
 		<Unit filename="View/TextTwistWindow.h" />
 		<Unit filename="controller/GameManager.cpp" />
