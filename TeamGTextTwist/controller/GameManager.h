@@ -11,25 +11,25 @@ using namespace fileIO;
 
 namespace controller
 {
-    class GameManager
-    {
-        public:
-            GameManager();
-            virtual ~GameManager();
+class GameManager
+{
+public:
+    GameManager();
+    virtual ~GameManager();
 
-            void addPlayerGuess(string word);
-            bool isValidWord(string word);
-            bool isDuplicateWordSubmission(string word);
-            vector<string> getValidWordsSubmitted();
-            void resetGame();
+    void addPlayerGuess(string word);
+    bool isValidWord(string word);
+    bool isDuplicateWordSubmission(string word);
+    vector<string> getValidWordsSubmitted();
+    void resetGame();
 
-        protected:
+protected:
 
-        private:
-            FileIO fileIO;
-            vector<string> wordList;
-            vector<string> validWordsSubmitted;
-    };
+private:
+    FileIO fileIO;
+    vector<string> wordList;
+    vector<string> validWordsSubmitted;
+};
 }
 
 #endif // GAMEMANAGER_H

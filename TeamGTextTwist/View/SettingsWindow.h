@@ -6,18 +6,18 @@
 
 namespace view
 {
-    class SettingsWindow : public OkCancelWindow
-    {
-        public:
-            SettingsWindow();
-            virtual ~SettingsWindow();
+class SettingsWindow : public OkCancelWindow
+{
+public:
+    SettingsWindow();
+    virtual ~SettingsWindow();
 
-        protected:
+protected:
 
-        private:
-            void okHandler();
-            void cancelHandler();
-    };
+private:
+    void okHandler();
+    void cancelHandler();
+};
 }
 
 

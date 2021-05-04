@@ -58,9 +58,9 @@ vector<Player> Leaderboard::getPlayers()
 const string Leaderboard::print()
 {
     string output = "";
-    for (int i = 0; i < this->numberOfPlayers; i++)
+    for (Player currPlayer : this->players)
     {
-        output += this->players[i].toString() + "\n";
+        output += currPlayer.toString() + "\n";
     }
     return output;
 }
