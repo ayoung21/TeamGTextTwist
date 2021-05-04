@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <algorithm>
+#include <string.h>
 using namespace std;
 
 #include "Player.h"
@@ -18,6 +19,7 @@ public:
     void addPlayer(Player& player);
     int getNumberOfPlayers();
     vector<Player> getPlayers();
+    const string print();
 
 protected:
 

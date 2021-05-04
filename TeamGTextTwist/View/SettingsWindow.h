@@ -11,11 +11,11 @@ using namespace std;
 
 namespace view
 {
-    class SettingsWindow : public OkCancelWindow
-    {
-        public:
-            SettingsWindow();
-            virtual ~SettingsWindow();
+class SettingsWindow : public OkCancelWindow
+{
+public:
+    SettingsWindow();
+    virtual ~SettingsWindow();
 
             //
             // Defines the game time in minutes

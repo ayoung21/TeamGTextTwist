@@ -5,9 +5,10 @@ namespace model
 //Instantiates a new leaderboard
 Leaderboard::Leaderboard()
 {
-    this->players.reserve(10);
+    this->players.reserve(5);
 }
 
+//Deconstructor for a leaderboard object
 Leaderboard::~Leaderboard()
 {
     //dtor
@@ -53,6 +54,22 @@ int Leaderboard::getNumberOfPlayers()
 vector<Player> Leaderboard::getPlayers()
 {
     return this->players;
+}
+
+//Prints the leaderboard for output
+//
+//@precondition none
+//@postcondition none
+//
+//@return the formatted leader board for display
+const string Leaderboard::print()
+{
+    string output = "";
+    for (Player currPlayer : this->players)
+    {
+        output += currPlayer.toString() + "\n";
+    }
+    return output;
 }
 }
 

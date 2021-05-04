@@ -18,6 +18,10 @@ const string toUpperCase(string text)
     return text;
 }
 
+//Initializes the letters for the buttons
+//
+//@precondition none
+//@postcondition none
 void initalizeLetters(vector<string> &letterList)
 {
     const int MAX_FREQUENCY = 11;

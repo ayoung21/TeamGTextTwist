@@ -21,93 +21,94 @@ using namespace controller;
 #include "SettingsWindow.h"
 #include "HighScoreWindow.h"
 
-namespace view {
-    class TextTwistWindow : public Fl_Window
-    {
-        public:
-            /*
-            ** Constructor and Deconstructor
-            */
-            TextTwistWindow(int width, int height, const char* title);
-            virtual ~TextTwistWindow();
+namespace view
+{
+class TextTwistWindow : public Fl_Window
+{
+public:
+    /*
+    ** Constructor and Deconstructor
+    */
+    TextTwistWindow(int width, int height, const char* title);
+    virtual ~TextTwistWindow();
 
-        protected:
+protected:
 
-        private:
-            /*
-            ** Constants
-            */
-            const int DEFAULT_PADDING = 45;
-            const int MIN_LETTERS_TO_SUBMIT = 3;
-            const int DEFAULT_GAMEPLAY_TIME = 60;
+private:
+    /*
+    ** Constants
+    */
+    const int DEFAULT_PADDING = 45;
+    const int MIN_LETTERS_TO_SUBMIT = 3;
+    const int DEFAULT_GAMEPLAY_TIME = 60;
 
-            /*
-            ** Private Member Variables
-            */
-            // FileIO fileIO;
-            GameManager gameManager;
-            int windowWidth;
-            int windowHeight;
-            int centerXPosition;
-            int centerYPosition;
-            Fl_Button* newGameButton;
-            Fl_Button* startGameButton;
-            Fl_Button* settingsButton;
-            Fl_Button* highScoreButton;
-            Fl_Button* submitWordButton;
-            Fl_Button* twistLettersButton;
-            Fl_Button* undoLetterButton;
-            Fl_Button* undoAllButton;
-            vector<Fl_Button*> letterButtons;
-            vector<string> letters;
-            vector<Fl_Button*> buttonsSelected;
-            string userWord;
-            Fl_Text_Buffer *currentUserGuessBuffer;
-            Fl_Text_Display *currentUserGuessDisplay;
-            Fl_Text_Buffer *currentScoreBuffer;
-            Fl_Text_Display *currentScoreDisplay;
-            Fl_Text_Buffer *validWordsSubmittedBuffer;
-            Fl_Text_Display *validWordsSubmittedDisplay;
-            Fl_Text_Buffer *gameTimeBuffer;
-            Fl_Text_Display *gameTimeDisplay;
-            Fl_Output *currentScoreLabel;
-            Fl_Output *duplicateWordSubmissionLabel;
-            Fl_Output *timerLabel;
-            int score = 0;
-            int gameTime = DEFAULT_GAMEPLAY_TIME;
+    /*
+    ** Private Member Variables
+    */
+    // FileIO fileIO;
+    GameManager gameManager;
+    int windowWidth;
+    int windowHeight;
+    int centerXPosition;
+    int centerYPosition;
+    Fl_Button* newGameButton;
+    Fl_Button* startGameButton;
+    Fl_Button* settingsButton;
+    Fl_Button* highScoreButton;
+    Fl_Button* submitWordButton;
+    Fl_Button* twistLettersButton;
+    Fl_Button* undoLetterButton;
+    Fl_Button* undoAllButton;
+    vector<Fl_Button*> letterButtons;
+    vector<string> letters;
+    vector<Fl_Button*> buttonsSelected;
+    string userWord;
+    Fl_Text_Buffer *currentUserGuessBuffer;
+    Fl_Text_Display *currentUserGuessDisplay;
+    Fl_Text_Buffer *currentScoreBuffer;
+    Fl_Text_Display *currentScoreDisplay;
+    Fl_Text_Buffer *validWordsSubmittedBuffer;
+    Fl_Text_Display *validWordsSubmittedDisplay;
+    Fl_Text_Buffer *gameTimeBuffer;
+    Fl_Text_Display *gameTimeDisplay;
+    Fl_Output *currentScoreLabel;
+    Fl_Output *duplicateWordSubmissionLabel;
+    Fl_Output *timerLabel;
+    int score = 0;
+    int gameTime = DEFAULT_GAMEPLAY_TIME;
 
-            /*
-            ** Private Methods
-            */
-            void initializeGamePlayButtons();
-            void initializeLetters();
-            string getRandomLetter();
-            static void cbNewGame(Fl_Widget* widget, void* data);
-            void resetGame();
-            static void cbLetterSelected(Fl_Widget* widget, void* data);
-            static void cbSubmitWord(Fl_Widget* widget, void* data);
-            static void cbTwistLetters(Fl_Widget* widget, void* data);
-            static void cbUndoLetter(Fl_Widget* widget, void* data);
-            static void cbUndoAll(Fl_Widget* widget, void* data);
-            static void cbStartGame(Fl_Widget* widget, void* data);
-            static void cbOnTick(void* data);
-            static void cbOpenSettings(Fl_Widget* widget, void* data);
-            static void cbOpenScoreBoard(Fl_Widget* widget, void* data);
-            void enableLetterButtons();
-            void clearUserGuess();
-            void addToScore(int wordLength);
-            void updateScoreDisplay();
-            void reduceScore();
-            void updateValidWordsDisplay();
-            bool isDuplicatedWordSubmission(string& userSubmittedWord);
-            void undoLastGuess();
-            void updateTimerLabel();
-            void onTick();
-            void startGame();
-            void disableGameplayUI();
-            void enableGameplayUI();
-            void stopTick();
-            void onGameOver();
-    };
+    /*
+    ** Private Methods
+    */
+    void initializeGamePlayButtons();
+    void initializeLetters();
+    string getRandomLetter();
+    static void cbNewGame(Fl_Widget* widget, void* data);
+    void resetGame();
+    static void cbLetterSelected(Fl_Widget* widget, void* data);
+    static void cbSubmitWord(Fl_Widget* widget, void* data);
+    static void cbTwistLetters(Fl_Widget* widget, void* data);
+    static void cbUndoLetter(Fl_Widget* widget, void* data);
+    static void cbUndoAll(Fl_Widget* widget, void* data);
+    static void cbStartGame(Fl_Widget* widget, void* data);
+    static void cbOnTick(void* data);
+    static void cbOpenSettings(Fl_Widget* widget, void* data);
+    static void cbOpenScoreBoard(Fl_Widget* widget, void* data);
+    void enableLetterButtons();
+    void clearUserGuess();
+    void addToScore(int wordLength);
+    void updateScoreDisplay();
+    void reduceScore();
+    void updateValidWordsDisplay();
+    bool isDuplicatedWordSubmission(string& userSubmittedWord);
+    void undoLastGuess();
+    void updateTimerLabel();
+    void onTick();
+    void startGame();
+    void disableGameplayUI();
+    void enableGameplayUI();
+    void stopTick();
+    void onGameOver();
+};
 }
 #endif // TEXTTWISTWINDOW_H

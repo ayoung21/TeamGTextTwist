@@ -7,25 +7,32 @@
 #include <FL/Fl_Text_Display.H>
 
 #include "Leaderboard.h"
+#include "Player.h"
 using namespace model;
+
+#include "FileIO.h"
+using namespace fileIO;
 
 namespace view
 {
-    class HighScoreWindow : public OkCancelWindow
-    {
-        public:
-            HighScoreWindow();
-            virtual ~HighScoreWindow();
+class HighScoreWindow : public OkCancelWindow
+{
+public:
+    HighScoreWindow();
+    virtual ~HighScoreWindow();
 
-        protected:
+protected:
 
-        private:
-            void okHandler();
-            void cancelHandler();
+private:
+    void okHandler();
+    void cancelHandler();
 
-            Fl_Text_Buffer *leaderBoardBuffer;
-            Fl_Text_Display *leaderBoardTextDisplay;
-    };
+    Fl_Text_Buffer *leaderBoardBuffer;
+    Fl_Text_Display *leaderBoardTextDisplay;
+
+    Leaderboard leaderBoard;
+    FileIO reader;
+};
 }
 
 #endif // HIGHSCOREWINDOW_H

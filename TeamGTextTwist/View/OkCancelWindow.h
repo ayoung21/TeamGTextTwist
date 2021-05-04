@@ -8,36 +8,36 @@
 namespace view
 {
 
-    //
-    // Abstract class that can be used for any window that needs Ok and Cancel buttons on it.
-    //
-    class OkCancelWindow : public Fl_Window
-    {
-    public:
-        enum WindowResult {OK, CANCEL, NONE};
+//
+// Abstract class that can be used for any window that needs Ok and Cancel buttons on it.
+//
+class OkCancelWindow : public Fl_Window
+{
+public:
+    enum WindowResult {OK, CANCEL, NONE};
 
-    private:
-        Fl_Button* okButton;
-        Fl_Button* cancelButton;
+private:
+    Fl_Button* okButton;
+    Fl_Button* cancelButton;
 
-        WindowResult buttonInvoked;
+    WindowResult buttonInvoked;
 
-    public:
-        OkCancelWindow(int width, int height, const char* title);
-        virtual ~OkCancelWindow();
+public:
+    OkCancelWindow(int width, int height, const char* title);
+    virtual ~OkCancelWindow();
 
-        void setOKLocation(int x, int y);
-        void setCancelLocation(int x, int y);
+    void setOKLocation(int x, int y);
+    void setCancelLocation(int x, int y);
 
-        static void cbOk(Fl_Widget* widget, void* data);
-        virtual void okHandler() = 0;
+    static void cbOk(Fl_Widget* widget, void* data);
+    virtual void okHandler() = 0;
 
-        static void cbCancel(Fl_Widget* widget, void* data);
-        virtual void cancelHandler() = 0;
+    static void cbCancel(Fl_Widget* widget, void* data);
+    virtual void cancelHandler() = 0;
 
-        OkCancelWindow::WindowResult setWindowResult(OkCancelWindow::WindowResult result);
-        OkCancelWindow::WindowResult getWindowResult();
-    };
+    OkCancelWindow::WindowResult setWindowResult(OkCancelWindow::WindowResult result);
+    OkCancelWindow::WindowResult getWindowResult();
+};
 
 }
 
