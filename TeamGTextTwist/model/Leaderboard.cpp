@@ -5,7 +5,7 @@ namespace model
 //Instantiates a new leaderboard
 Leaderboard::Leaderboard()
 {
-    this->players.reserve(10);
+    this->players.reserve(5);
 }
 
 Leaderboard::~Leaderboard()
@@ -53,6 +53,16 @@ int Leaderboard::getNumberOfPlayers()
 vector<Player> Leaderboard::getPlayers()
 {
     return this->players;
+}
+
+const string Leaderboard::print()
+{
+    string output = "";
+    for (int i = 0; i < this->numberOfPlayers; i++)
+    {
+        output += this->players[i].toString() + "\n";
+    }
+    return output;
 }
 }
 

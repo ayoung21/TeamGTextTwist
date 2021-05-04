@@ -16,9 +16,25 @@ namespace view
         this->setCancelLocation(170, 140);
 
         this->leaderBoardBuffer = new Fl_Text_Buffer();
-        this->leaderBoardTextDisplay = new Fl_Text_Display(45, 30, 200, 100);
+        this->leaderBoardTextDisplay = new Fl_Text_Display(30, 20, 275, 100);
         this->leaderBoardTextDisplay->textfont(FL_COURIER);
         this->leaderBoardTextDisplay->buffer(leaderBoardBuffer);
+
+        this->leaderBoard = Leaderboard();
+
+        Player player1 = Player("David", 354, 10);
+        Player player2 = Player("Jim", 354, 12);
+        Player player3 = Player("Tim", 400, 14);
+        Player player4 = Player("Tom", 360, 13);
+        Player player5 = Player("John", 200, 14);
+
+        this->leaderBoard.addPlayer(player1);
+        this->leaderBoard.addPlayer(player2);
+        this->leaderBoard.addPlayer(player3);
+        this->leaderBoard.addPlayer(player4);
+        this->leaderBoard.addPlayer(player5);
+
+        this->leaderBoardBuffer->text(this->leaderBoard.print().c_str());
         end();
     }
 

@@ -7,6 +7,7 @@
 #include <FL/Fl_Text_Display.H>
 
 #include "Leaderboard.h"
+#include "Player.h"
 using namespace model;
 
 namespace view
@@ -25,6 +26,8 @@ namespace view
 
             Fl_Text_Buffer *leaderBoardBuffer;
             Fl_Text_Display *leaderBoardTextDisplay;
+
+            Leaderboard leaderBoard;
     };
 }
 
