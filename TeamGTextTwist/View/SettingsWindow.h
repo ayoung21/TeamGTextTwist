@@ -9,6 +9,12 @@
 #include <string>
 using namespace std;
 
+#include "GameManager.h"
+using namespace controller;
+
+#include "Settings.h"
+using namespace model;
+
 namespace view
 {
 class SettingsWindow : public OkCancelWindow
@@ -26,9 +32,18 @@ public:
             //
             enum REUSE_LETTERS { FALSE, TRUE };
 
+            //
+            // get settings of game
+            //
+            Settings* getSettings();
+
         protected:
 
         private:
+            Settings* settings;
+            int timeSelected = 60;
+            bool reuseLettersSelected = false;
+
             static const int NUMBER_OF_TIME_OPTIONS = 3;
             static const int NUMBER_OF_TOGGLE_OPTIONS = 2;
 

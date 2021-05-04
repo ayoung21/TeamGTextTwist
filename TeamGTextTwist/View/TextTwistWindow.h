@@ -21,6 +21,10 @@ using namespace controller;
 #include "SettingsWindow.h"
 #include "HighScoreWindow.h"
 
+#include "Settings.h"
+using namespace model;
+
+
 namespace view
 {
 class TextTwistWindow : public Fl_Window
@@ -47,6 +51,8 @@ private:
     */
     // FileIO fileIO;
     GameManager gameManager;
+    int timeSettings = 60;
+    int reuseLettersSettings = false;
     int windowWidth;
     int windowHeight;
     int centerXPosition;

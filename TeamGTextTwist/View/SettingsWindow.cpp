@@ -17,7 +17,6 @@ namespace view
     //
     SettingsWindow::SettingsWindow() : OkCancelWindow(330, 200, "Settings")
     {
-
         begin();
         this->createAndDisplayTimeSettingOptions();
         this->createAndDisplayLetterReuseOptions();
@@ -32,6 +31,11 @@ namespace view
     SettingsWindow::~SettingsWindow()
     {
         //dtor
+    }
+
+    Settings* SettingsWindow::getSettings()
+    {
+        return this->settings;
     }
 
     /*
@@ -73,7 +77,7 @@ namespace view
         this->toggleReuseRadioGroup = new Fl_Group(X_RADIO_GROUP, Y_RADIO_GROUP, WIDTH_RADIO_GROUP, HEIGHT_RADIO_GROUP, "Reuse of Letters");
         this->toggleReuseRadioGroup->begin();
 
-        for (int index = 0; index < 2; index++)
+        for (int index = 0; index < NUMBER_OF_TOGGLE_OPTIONS; index++)
         {
             this->timeDurationLabels[index] = (index == 0) ? new string("False") : new string("True");
             this->toggleReuseRadioGroupButton[index] = new Fl_Round_Button(25 + (index * 100), Y_RADIO_GROUP + 10, 12, 12, timeDurationLabels[index]->c_str());
@@ -97,6 +101,19 @@ namespace view
                 window->currentDurationOption = (DURATION_IN_MINUTES)index;
             }
         }
+
+        switch(window->currentDurationOption)
+        {
+            case ONE:
+                window->timeSelected = 60;
+                break;
+            case TWO:
+                window->timeSelected = 120;
+                break;
+            case THREE:
+                window->timeSelected = 180;
+                break;
+        }
     }
 
     void SettingsWindow::cbReuseLettersChanged(Fl_Widget* widget, void* data)
@@ -110,12 +127,25 @@ namespace view
                 window->currentReuseOption = (REUSE_LETTERS)index;
             }
         }
+
+        switch(window->currentReuseOption)
+        {
+            case FALSE:
+                window->reuseLettersSelected = false;
+                break;
+            case TRUE:
+                window->reuseLettersSelected = true;
+                break;
+        }
+
+        cout << "REUSE OPTION SELECTED: " << window->reuseLettersSelected << endl;
     }
 
     void SettingsWindow::okHandler()
     {
         try
         {
+            this->settings = new Settings(this->timeSelected, this->reuseLettersSelected);
             this->hide();
         }
         catch (const char* message)
@@ -125,14 +155,14 @@ namespace view
 
     }
 
-//
-// The instance handler when cancel is invoked
-//
-// @precondition none
-// @postcondition none
-//
-void SettingsWindow::cancelHandler()
-{
-    this->hide();
-}
+    //
+    // The instance handler when cancel is invoked
+    //
+    // @precondition none
+    // @postcondition none
+    //
+    void SettingsWindow::cancelHandler()
+    {
+        this->hide();
+    }
 }

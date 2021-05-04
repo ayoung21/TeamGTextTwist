@@ -88,6 +88,8 @@ TextTwistWindow::~TextTwistWindow()
 
 void TextTwistWindow::cbOpenSettings(Fl_Widget* widget, void* data)
 {
+    TextTwistWindow* window = (TextTwistWindow*)data;
+
     SettingsWindow settingsWindow;
     settingsWindow.set_modal();
     settingsWindow.show();
@@ -99,7 +101,13 @@ void TextTwistWindow::cbOpenSettings(Fl_Widget* widget, void* data)
 
     if (settingsWindow.getWindowResult() == OkCancelWindow::WindowResult::OK)
     {
-        // TODO: Apply Settings
+        Settings* settings = settingsWindow.getSettings();
+        window->timeSettings = settings->getGameplayTime();
+        window->gameTime = settings->getGameplayTime();
+        window->reuseLettersSettings = settings->getReuseLetters();
+        cout << window->reuseLettersSettings << endl;
+        window->updateTimerLabel();
+        window->resetGame();
     }
     else
     {
@@ -120,7 +128,7 @@ void TextTwistWindow::cbOpenScoreBoard(Fl_Widget* widget, void* data)
 
     if (highScoreWindow.getWindowResult() == OkCancelWindow::WindowResult::OK)
     {
-        // TODO: Apply Settings
+        // TODO: Scoreboard logic
     }
     else
     {
@@ -164,7 +172,11 @@ void TextTwistWindow::cbLetterSelected(Fl_Widget* widget, void* data)
     window->userWord.append(widget->label());
     window->currentUserGuessBuffer->text(window->userWord.c_str());
     window->buttonsSelected.push_back((Fl_Button*) widget);
-    widget->deactivate();
+
+    if (!window->reuseLettersSettings)
+    {
+        widget->deactivate();
+    }
 
     if (window->userWord.length() >= window->MIN_LETTERS_TO_SUBMIT)
     {
@@ -215,7 +227,7 @@ void TextTwistWindow::resetGame()
     this->enableLetterButtons();
     this->submitWordButton->deactivate();
     this->score = 0;
-    this->gameTime = DEFAULT_GAMEPLAY_TIME;
+    this->gameTime = this->timeSettings;
     this->updateScoreDisplay();
     this->duplicateWordSubmissionLabel->hide();
     this->gameManager.resetGame();
@@ -252,12 +264,8 @@ void TextTwistWindow::cbSubmitWord(Fl_Widget* widget, void* data)
         window->updateScoreDisplay();
     }
 
-    // enable all buttons
     window->enableLetterButtons();
-
-    // reset input and word
     window->clearUserGuess();
-
     window->submitWordButton->deactivate();
 }
 
