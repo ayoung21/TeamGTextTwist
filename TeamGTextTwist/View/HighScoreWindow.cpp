@@ -9,6 +9,8 @@ using namespace std;
 
 namespace view
 {
+
+//Constructor for the high score window
 HighScoreWindow::HighScoreWindow() : OkCancelWindow(330, 185, "High Scores!")
 {
     begin();

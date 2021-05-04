@@ -6,16 +6,26 @@ using namespace std;
 
 namespace fileIO
 {
+
+//Constructor for a file io object
 FileIO::FileIO()
 {
     //ctor
 }
 
+//Deconstructor for the file IO object
 FileIO::~FileIO()
 {
     //dtor
 }
 
+//Gets the list of words from the file read from
+//
+//@precondition none
+//@postcondition none
+//
+//@param wordList
+//      The list to store the words in
 void FileIO::createWordListFromFile(vector<string>& wordList)
 {
     string fileName = "./words.txt";
@@ -36,6 +46,13 @@ void FileIO::createWordListFromFile(vector<string>& wordList)
     file.close();
 }
 
+//Gets the leader board read in from the file
+//
+//@precondition none
+//@postcondition none
+//
+//@param board
+//      The leaderboard to add players to
 void FileIO::createLeaderBoardFromFile(Leaderboard board)
 {
     string fileName = "./leaderboard.txt";
