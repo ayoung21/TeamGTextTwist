@@ -124,7 +124,7 @@
 1620103334 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/model/Player.cpp
 	"Player.h"
 
-1620018820 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/model/Player.h
+1620138257 /home/dwalke22/TeamGTextTwist/TeamGTextTwist/model/Player.h
 	<string>
 	<algorithm>
 
@@ -207,7 +207,7 @@
 1620100026 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/OkCancelWindow.cpp
 	"OkCancelWindow.h"
 
-1620011454 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/SettingsWindow.cpp
+1620137064 source:/home/dwalke22/TeamGTextTwist/TeamGTextTwist/View/SettingsWindow.cpp
 	"SettingsWindow.h"
 	"Utils.h"
 	<Fl/fl_ask.H>

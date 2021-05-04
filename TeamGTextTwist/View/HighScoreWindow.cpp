@@ -25,11 +25,11 @@ HighScoreWindow::HighScoreWindow() : OkCancelWindow(330, 185, "High Scores!")
     //this->reader.createLeaderBoardFromFile(this->leaderBoard);
     this->leaderBoard = Leaderboard();
 
-    Player player1 = Player("David", 354, 10);
-    Player player2 = Player("Jim", 354, 12);
-    Player player3 = Player("Tim", 400, 14);
-    Player player4 = Player("Tom", 360, 13);
-    Player player5 = Player("John", 200, 14);
+    Player player1 = Player("David", 354, 180);
+    Player player2 = Player("Jim", 354, 120);
+    Player player3 = Player("Tim", 400, 60);
+    Player player4 = Player("Tom", 360, 120);
+    Player player5 = Player("John", 200, 180);
 
     this->leaderBoard.addPlayer(player1);
     this->leaderBoard.addPlayer(player2);

@@ -26,7 +26,7 @@ public:
             return score < player.score;
         }
 
-        return time < player.time;
+        return time > player.time;
     }
 
     bool operator>(const Player player) const
